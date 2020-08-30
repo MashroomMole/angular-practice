@@ -7,11 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
-import { MatToolbarModule} from '@angular/material/toolbar';
-import { MatIconModule} from '@angular/material/icon';
-import { MatCardModule} from '@angular/material/card';
-import { MatButtonModule} from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { PostThumbnailComponent } from './post-thumbnail/post-thumbnail.component';
@@ -22,6 +17,7 @@ import { PostRouteActivator } from './post-details/post-route-activator';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -38,11 +34,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
+    MaterialModule,
     MatGridListModule,
     MatTabsModule
 
