@@ -8,7 +8,7 @@ export class PostRouteActivator implements CanActivate{
 
   }
 
-  canActivate(route: ActivatedRouteSnapshot){
+  canActivate(route: ActivatedRouteSnapshot): boolean {
     const postExists = !!this.postService.getPost(+route.params['id']);
 
     if (!postExists) {

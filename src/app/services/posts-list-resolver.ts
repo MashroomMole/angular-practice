@@ -8,7 +8,7 @@ export class PostsListResolver implements Resolve<any> {
   constructor(private postsService: PostsService) {
 
   }
-  resolve() {
+  resolve(): any {
     return this.postsService.getPosts();
   }
 

@@ -14,7 +14,6 @@ export class PostsService {
   getPosts(): Observable<PostsModel[]> {
     return this.http.get<PostsModel[]>('https://jsonplaceholder.typicode.com/posts')
       .pipe(catchError(this.handleError<PostsModel[]>('getPosts', [])));
-    console.log('hi33');
   }
 
   getPost(id: number): Observable<PostsModel> {
@@ -22,7 +21,7 @@ export class PostsService {
       .pipe(catchError(this.handleError<PostsModel>('getPost')));
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);

@@ -18,16 +18,16 @@ export class PostDetailsComponent implements OnInit {
 
   postDetails: FormGroup;
 
-  public ngOnInit() {
-    let title = new FormControl();
-    let id = new FormControl();
-    let userId = new FormControl();
-    let body = new FormControl();
+  public ngOnInit(): void {
+    const title = new FormControl();
+    const id = new FormControl();
+    const userId = new FormControl();
+    const body = new FormControl();
     this.postDetails = new FormGroup({
-      title: title,
-      id: id,
-      userId: userId,
-      body: body
+      title,
+      id,
+      userId,
+      body
     });
 
     this.route.params.forEach((params: Params) => {

@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { PostsModel } from '../shared/posts.model';
 import { PostsService } from '../services/get-posts.service';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +13,7 @@ export class HomeComponent implements OnInit {
   // tslint:disable-next-line:no-unused-expression
   constructor(private postService: PostsService, private route: ActivatedRoute) { }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.posts = this.route.snapshot.data['posts'];
   }
 }
