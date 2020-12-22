@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { PostsService } from '../services/get-posts.service';
-import { PostsModel } from '../shared/posts.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { PostsService } from '../../services/get-posts.service';
+import { CommentsModel, PostsModel } from '../../shared/posts.model';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
+  selector: 'app-post-details',
   templateUrl: './post-details.component.html',
   styles: [``]
 })
 
 export class PostDetailsComponent implements OnInit {
-  public post: PostsModel;
+  @Input() post: PostsModel;
+  public comments: CommentsModel[];
 
-  constructor(private postService: PostsService, private route: ActivatedRoute) {
+  constructor(private postService: PostsService, private route: ActivatedRoute, private router: Router) {
 
   }
 
@@ -36,5 +38,9 @@ export class PostDetailsComponent implements OnInit {
         });
       }
     );
+  }
+  public navigateToComments(postId: string): Promise<boolean> {
+    return this.router.navigate(['../posts/' + postId + '/comments']);
+
   }
 }

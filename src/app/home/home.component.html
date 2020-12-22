@@ -1,7 +1,19 @@
-<div>
-  <div class="">
-    <div *ngFor="let post of posts" class="col-md-5">
+<h1 style="text-align: center; margin-bottom: 12px; color: lightslategray;">Recent Posts</h1>
+<div class="row">
+  <div class="col-lg-8 col-md-10 mx-auto"
+       *ngIf="posts$ | async as posts">
+    <div *ngFor="let post of posts">
       <app-post-thumbnail [post]="post"></app-post-thumbnail>
+      <hr>
+    </div>
+
+    <div class="clearfix">
+      <a class="btn btn-secondary float-left pointer" routerLink="/userId-post">
+        New Post
+        <i class="fa fa-plus" aria-hidden="true"></i></a>
+      <a class="btn btn-secondary float-right pointer" routerLink="/posts">
+        All Posts &rarr;
+      </a>
     </div>
   </div>
 </div>

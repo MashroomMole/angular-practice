@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { PostsListResolver } from './services/posts-list-resolver';
 import { PostThumbnailComponent } from './post-thumbnail/post-thumbnail.component';
-import { PostRouteActivator } from './post-details/post-route-activator';
-import { PostDetailsComponent } from './post-details/post-details.component';
+import { PostRouteActivator } from './post-thumbnail/post-details/post-route-activator';
+import { PostDetailsComponent } from './post-thumbnail/post-details/post-details.component';
+import { AppCommentsComponent } from './comments/app-comments.component';
 
 const routes: Routes = [
-  {path: 'posts', component: HomeComponent, resolve: {posts: PostsListResolver }},
-  {path: 'posts/:id', component: PostDetailsComponent, canActivate: [PostRouteActivator]},
+  {path: 'posts', component: PostThumbnailComponent},
+  {path: 'posts/:id', component: PostDetailsComponent, canActivate: [PostRouteActivator] },
+  {path: 'posts/:id/comments', component: AppCommentsComponent},
   {path: 'about', component: AboutComponent},
-  {path: '', redirectTo: '/posts', pathMatch: 'full'}
+  {path: 'home', component: HomeComponent},
+
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({

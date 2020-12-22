@@ -1,35 +1,21 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PostsModel } from '../shared/posts.model';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-thumbnail',
   templateUrl: './post-thumbnail.component.html',
-  styles: [`
-      .well div {
-          color: #bbb;
-      }
-  `
-  ]
 })
 
-export class PostThumbnailComponent implements OnInit {
+export class PostThumbnailComponent {
   @Input() public post: PostsModel;
   @Output() public eventClick = new EventEmitter();
 
-  postForm: FormGroup;
+constructor(private router: Router) {}
 
-  public ngOnInit(): void {
-    const title = new FormControl();
-    const id = new FormControl();
-    const userId = new FormControl();
-    const body = new FormControl();
-    this.postForm = new FormGroup({
-      title,
-      id,
-      userId,
-      body
-    });
+  public navigateToPost(postId: string): Promise<boolean> {
+    return this.router.navigate(['../posts/' + postId]);
+
   }
 }
 

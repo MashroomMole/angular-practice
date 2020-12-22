@@ -1,0 +1,13 @@
+<div class="post-preview">
+    <h2 class="post-title" [textContent]="post?.title">
+    </h2>
+    <h3 class="post-subtitle">{{ post.body }}
+    </h3>
+  <p class=" post-meta">Posted by
+    <a href="#" [textContent]="post.userId"></a>
+  </p>
+  <app-comments
+    (click)="navigateToComments(post?.postId)"
+  [postId]="post.postId"></app-comments>
+</div>
+<!--- .substring(0, 48) --->

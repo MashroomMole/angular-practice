@@ -1,9 +1,5 @@
-<mat-toolbar color="primary">
-  <h1 routerLink="/posts"
-      routerLinkActive="active">
-    My Test Project
-  </h1>
-  <app-navigation-bar></app-navigation-bar>
-  <button mat-button routerLink="/about">About</button>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<app-navbar></app-navbar>
+<app-header></app-header>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
