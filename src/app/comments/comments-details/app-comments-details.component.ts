@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CommentsModel } from '../../shared/posts.model';
+import { CommentsModel } from '../../shared/model';
 
 @Component({
   selector: 'app-comments-details',

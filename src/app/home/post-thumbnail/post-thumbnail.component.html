@@ -1,5 +1,5 @@
 <div class="post-preview">
-<a (click)="navigateToPost(post.postId)" class="pointer">
+<a (click)="navigateToPost(post.id)" class="pointer">
   <h2 class="post-title" [textContent]="post?.title">
   </h2>
   <h3 class="post-subtitle">{{ post.body.length > 48 ? post.body.substring(0, 50)+"..." : post.body }}

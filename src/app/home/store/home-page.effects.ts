@@ -4,14 +4,14 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { HomePageState } from './state';
-import { postsLoad, postsLoadFailure, postsLoadSuccess } from './post-actions';
-import { PostsService } from '../../../services/get-posts.service';
+import { PostsService } from '../../services/get-posts.service';
+import { postsLoad, postsLoadFailure, postsLoadSuccess } from './home-page.actions';
 
 /**
  * AppComponentEffect - communicates with server via HTTP
  */
 @Injectable()
-export class PostEffects {
+export class HomePageEffects {
   /**
    * Loads comments for a post
    */

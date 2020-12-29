@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { CommentsModel } from '../shared/posts.model';
-import { catchError, tap } from 'rxjs/operators';
+import { CommentsModel } from '../shared/model';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,9 @@ export class CommentsService {
   constructor(private http: HttpClient) {
   }
 
-  getComments(): Observable<CommentsModel[]> {
-    return this.http.get<CommentsModel[]>('https://jsonplaceholder.typicode.com/posts/1/comments')
-      .pipe(
-        tap(data => console.log(JSON.stringify(data))),
-        catchError(this.handleError));
+  getComments(postId: string): Observable<CommentsModel[]> {
+    return this.http.get<CommentsModel[]>('https://jsonplaceholder.typicode.com/posts/' + postId + '/comments')
+      .pipe(catchError(this.handleError));
   }
 
 

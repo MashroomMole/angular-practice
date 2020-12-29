@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PostsModel } from '../shared/posts.model';
+import { PostModel } from '../shared/model';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -11,14 +11,14 @@ export class PostsService {
   constructor(private http: HttpClient) {
 
   }
-  getPosts(): Observable<PostsModel[]> {
-    return this.http.get<PostsModel[]>('https://jsonplaceholder.typicode.com/posts')
-      .pipe(catchError(this.handleError<PostsModel[]>('getPosts', [])));
+  getPosts(): Observable<PostModel[]> {
+    return this.http.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts')
+      .pipe(catchError(this.handleError<PostModel[]>('getPosts', [])));
   }
 
-  getPost(id: number): Observable<PostsModel> {
-    return this.http.get<PostsModel>('https://jsonplaceholder.typicode.com/posts/' + id)
-      .pipe(catchError(this.handleError<PostsModel>('getPost')));
+  getPost(postId: string): Observable<PostModel> {
+    return this.http.get<PostModel>('https://jsonplaceholder.typicode.com/posts/' + postId)
+      .pipe(catchError(this.handleError<PostModel>('getPost')));
   }
 
   private handleError<T>(operation = 'operation', result?: T): any {

@@ -1,4 +1,5 @@
-<div class="post-preview">
+<div class="post-preview"
+     *ngIf="post$ | async as post">
     <h2 class="post-title" [textContent]="post?.title">
     </h2>
     <h3 class="post-subtitle">{{ post.body }}
@@ -7,7 +8,5 @@
     <a href="#" [textContent]="post.userId"></a>
   </p>
   <app-comments
-    (click)="navigateToComments(post?.postId)"
-  [postId]="post.postId"></app-comments>
+    (click)="navigateToComments(post?.id)"></app-comments>
 </div>
-<!--- .substring(0, 48) --->

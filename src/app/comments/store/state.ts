@@ -1,4 +1,4 @@
-import { CommentsModel } from '../../shared/posts.model';
+import { CommentsModel } from '../../shared/model';
 
 export const POST_COMMENTS_FEATURE_KEY = 'POST_COMMENTS';
 

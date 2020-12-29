@@ -1,9 +1,9 @@
 export interface HomePageModel {
- model: Array<PostsModel>;
+ posts: Array<PostModel>;
 }
 
-export interface PostsModel {
-  postId: string;
+export interface PostModel {
+  id: string;
   userId: string;
   title: string;
   body: string;

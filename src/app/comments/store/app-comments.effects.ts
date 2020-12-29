@@ -1,11 +1,12 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { commentsLoad, commentsLoadFailure, commentsLoadSuccess } from './app-comments.actions';
-import { PostCommentsState } from './state';
+import { commentsLengthLoad, commentsLoad, commentsLoadFailure, commentsLoadSuccess } from './app-comments.actions';
 import { CommentsService } from '../../services/get-comments.service';
+import { selectRouterState } from '../../store/router/router-selectors';
+import { AppState } from '../../store/reducers';
 
 /**
  * AppComponentEffect - communicates with server via HTTP
@@ -19,8 +20,22 @@ export class AppCommentsEffects {
     return this.actions$
       .pipe(
         ofType(commentsLoad),
-        // withLatestFrom(this.store.select(selectPostId)),
-        mergeMap(() => this.commentsService.getComments()
+        withLatestFrom(this.store.select(selectRouterState)),
+        switchMap(([ , routerParams]) => this.commentsService.getComments(routerParams['id'])
+          .pipe(
+            map(comments => commentsLoadSuccess({ comments })),
+            catchError(error => of(commentsLoadFailure({ error })))
+          )
+        )
+      );
+  });
+
+  public commentsLengthLoad$ = createEffect(() => {
+    return this.actions$
+      .pipe(
+        ofType(commentsLengthLoad),
+        withLatestFrom(this.store.select(selectRouterState)),
+        switchMap(([ , routerParams]) => this.commentsService.getComments(routerParams['id'])
           .pipe(
             map(comments => commentsLoadSuccess({ comments })),
             catchError(error => of(commentsLoadFailure({ error })))
@@ -31,7 +46,7 @@ export class AppCommentsEffects {
 
   constructor(
     private actions$: Actions,
-    private store: Store<PostCommentsState>,
+    private store: Store<AppState>,
     private commentsService: CommentsService,
   ) {}
 }

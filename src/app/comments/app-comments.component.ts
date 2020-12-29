@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CommentsModel } from '../shared/posts.model';
 import { FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { PostCommentsState } from './store/state';
 import { commentsLoad } from './store/app-comments.actions';
 import { Observable } from 'rxjs';
 import { selectComments } from './store/app-comments.selectors';
+import { CommentsModel } from '../shared/model';
+import { AppState } from '../store/reducers';
 
 @Component({
   selector: 'app-comments',
@@ -17,7 +17,7 @@ export class AppCommentsComponent implements OnInit {
   @Input() public postId: string;
   @Output() public emit: EventEmitter<any>;
 
-  constructor(private store: Store<PostCommentsState>) {
+  constructor(private store: Store<AppState>) {
 
   }
   comments$: Observable<CommentsModel[]>;
@@ -26,7 +26,7 @@ export class AppCommentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.comments$ = this.store.select(selectComments);
-    this.store.dispatch(commentsLoad({id: '1'}));
+    this.store.dispatch(commentsLoad());
     }
   }
 

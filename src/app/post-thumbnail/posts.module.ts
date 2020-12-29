@@ -3,25 +3,24 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PostThumbnailComponent } from './post-thumbnail.component';
-import { PostDetailsComponent } from './post-details/post-details.component';
-import { POST_FEATURE_KEY } from './post-details/store/state';
+import { PostDetailsComponent } from './post-details.component';
+import { POST_FEATURE_KEY } from './store/state';
 import { AppCommentsModule } from '../comments/app-comments.module';
-import { postsReducer } from './post-details/store/posts-reducer';
-import { PostEffects } from './post-details/store/post.effects';
+import { postReducer } from './store/post-reducer';
+import { RouterModule } from '@angular/router';
+import { PostEffects } from './store/post.effects';
 
 @NgModule({
-  declarations: [PostThumbnailComponent, PostDetailsComponent],
+  declarations: [PostDetailsComponent],
   exports: [
-    PostThumbnailComponent
   ],
   imports: [
-    StoreModule.forFeature(POST_FEATURE_KEY, postsReducer),
+    StoreModule.forFeature(POST_FEATURE_KEY, postReducer),
     EffectsModule.forFeature([PostEffects]),
     CommonModule,
     ReactiveFormsModule,
-    AppCommentsModule
-
+    AppCommentsModule,
+    RouterModule,
   ]
 })
 export class PostsModule {}
