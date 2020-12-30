@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PostModel } from '../../shared/model';
+import { PostModel } from '../../model/model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 
 export class PostThumbnailComponent {
   @Input() public post: PostModel;
-  // @Output() public eventClick = new EventEmitter();
 
 constructor(private router: Router) {}
 

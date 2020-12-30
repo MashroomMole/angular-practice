@@ -1,0 +1,13 @@
+<div class="mat-card">
+  <div class="card-body">
+    <ng-container>
+      <nav>
+        <ul>
+      <li><a class="pointer" [routerLink]="['/posts', postId, 'comments']" routerLinkActive="active"
+      >Comments ({{comments?.length}})
+      </a></li>
+        </ul>
+      </nav>
+   </ng-container>
+  </div>
+</div>

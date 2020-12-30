@@ -16,6 +16,12 @@ h3.post-content {
   padding-bottom: 50px;
 }
 
+h3.comments-body {
+  padding-top: 20px;
+  font-weight: 200;
+  margin: 0 0 10px;
+  padding-bottom: 30px;
+}
 p a {
   text-decoration: underline;
 }
@@ -333,6 +339,39 @@ header.masthead .post-heading .meta a {
 
 .post-preview>.post-meta>a:focus,
 .post-preview>.post-meta>a:hover {
+  text-decoration: underline;
+  color: #0085A1;
+}
+
+.comments>a {
+  color: #212529;
+}
+
+.comments>a:focus,
+.comments>a:hover {
+  text-decoration: none;
+  color: #0085A1;
+}
+
+.comments>a>.comments-body {
+  font-weight: 200;
+  margin: 0 0 10px;
+}
+
+.comments>.comments-meta {
+  font-size: 15px;
+  font-style: italic;
+  margin-top: 0;
+  color: #868e96;
+}
+
+.comments>.comments-meta>a {
+  text-decoration: none;
+  color: #212529;
+}
+
+.comments>.comments-meta>a:focus,
+.comments>.comments-meta>a:hover {
   text-decoration: underline;
   color: #0085A1;
 }

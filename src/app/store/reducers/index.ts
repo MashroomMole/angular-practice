@@ -1,7 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { ROUTER_FEATURE_KEY, RouterState } from '../router/router';
-import { POST_FEATURE_KEY, PostState } from '../../post-thumbnail/store/state';
+import { POST_FEATURE_KEY, PostState } from '../../post/store/state';
 import { HOME_PAGE_FEATURE_KEY, HomePageState } from '../../home/store/state';
 import { POST_COMMENTS_FEATURE_KEY, PostCommentsState } from '../../comments/store/state';
 

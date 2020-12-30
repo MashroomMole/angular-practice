@@ -1,4 +1,4 @@
-import { CommentsModel } from '../../shared/model';
+import { CommentsModel } from '../../model/model';
 
 export const POST_FEATURE_KEY = 'POST_STATE';
 

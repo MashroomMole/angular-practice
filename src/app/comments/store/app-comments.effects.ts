@@ -3,39 +3,23 @@ import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { commentsLengthLoad, commentsLoad, commentsLoadFailure, commentsLoadSuccess } from './app-comments.actions';
-import { CommentsService } from '../../services/get-comments.service';
-import { selectRouterState } from '../../store/router/router-selectors';
+import { commentsLoadFailure, commentsLoadSuccess, navigateToComments } from './app-comments.actions';
 import { AppState } from '../../store/reducers';
+import { PostsService } from '../../services/get-posts.service';
+import { routerParamFlatMap } from '../../store/router/router-selectors';
 
 /**
- * AppComponentEffect - communicates with server via HTTP
+ * AppCommentsEffect - handles navigation to comments component
  */
 @Injectable()
 export class AppCommentsEffects {
-  /**
-   * Loads comments for a post
-   */
-  public commentsLoad$ = createEffect(() => {
-    return this.actions$
-      .pipe(
-        ofType(commentsLoad),
-        withLatestFrom(this.store.select(selectRouterState)),
-        switchMap(([ , routerParams]) => this.commentsService.getComments(routerParams['id'])
-          .pipe(
-            map(comments => commentsLoadSuccess({ comments })),
-            catchError(error => of(commentsLoadFailure({ error })))
-          )
-        )
-      );
-  });
 
-  public commentsLengthLoad$ = createEffect(() => {
+  public navigateToComments$ = createEffect(() => {
     return this.actions$
       .pipe(
-        ofType(commentsLengthLoad),
-        withLatestFrom(this.store.select(selectRouterState)),
-        switchMap(([ , routerParams]) => this.commentsService.getComments(routerParams['id'])
+        ofType(navigateToComments),
+        withLatestFrom(this.store.select(routerParamFlatMap)),
+        switchMap(([, routerParams]) => this.postsService.getComments(routerParams['id'])
           .pipe(
             map(comments => commentsLoadSuccess({ comments })),
             catchError(error => of(commentsLoadFailure({ error })))
@@ -47,6 +31,6 @@ export class AppCommentsEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private commentsService: CommentsService,
+    private postsService: PostsService,
   ) {}
 }

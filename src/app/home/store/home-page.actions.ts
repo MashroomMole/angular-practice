@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { PostModel } from '../../shared/model';
+import { PostModel } from '../../model/model';
 
 export enum HomePageActions {
-  postsLoadSuccess = '[Posts] load posts  success',
+  postsLoadSuccess = '[Posts] load posts success',
   postsLoad = '[Posts] load posts',
   postsLoadFailure = '[Posts] posts failure'
 }

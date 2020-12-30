@@ -1,0 +1,27 @@
+<h2 style="text-align: left; margin-bottom: 15px; color: lightslategray;">Comments:</h2>
+
+<div class="comments">
+  <div
+  *ngIf="comments$ | async as comments">
+    <div
+       *ngFor= "let comment of comments">
+      <h3 class="comments-body">
+        {{comment?.body}}
+      </h3>
+        <p class="comments-meta">Commented by:
+          <a [textContent]="comment.name"></a>
+          <br />
+          <a [textContent]="comment.email"></a>
+        </p>
+  </div>
+</div>
+
+<!-- Back to Post Button -->
+<div>
+  <br />
+  <div class="clearfix text-center mx-auto">
+      <a class="btn btn-secondary pointer" routerLink="..">Back to the Post</a>
+  </div>
+  <br />
+</div>
+</div>

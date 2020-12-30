@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostModel } from '../shared/model';
+import { PostModel } from '../model/model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { postsLoad } from './store/home-page.actions';
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private store: Store<HomePageState>) { }
 
   public ngOnInit(): void {
-    this.posts$ = this.store.select(selectPosts);
     this.store.dispatch(postsLoad());
+    this.posts$ = this.store.select(selectPosts);
   }
 }

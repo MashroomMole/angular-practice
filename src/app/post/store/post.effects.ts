@@ -2,11 +2,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { of } from 'rxjs';
-import { postLoadFailure, postPreviewLoad, postPreviewLoadSuccess } from './post-actions';
 import { PostsService } from '../../services/get-posts.service';
-import { AppState } from '../../store/reducers';
 import { routerParamFlatMap } from '../../store/router/router-selectors';
+import { postLoadFailure, postPreviewLoad, postPreviewLoadSuccess } from './post-actions';
+import { of } from 'rxjs';
+import { AppState } from '../../store/reducers';
+import { commentsLoad, commentsLoadFailure, commentsLoadSuccess } from '../../comments/store/app-comments.actions';
 
 /**
  * postPreviewEffects - communicates with server via HTTP
@@ -25,6 +26,23 @@ export class PostEffects {
           .pipe(
             map(post => postPreviewLoadSuccess({ post })),
             catchError(error => of(postLoadFailure({ error })))
+          )
+        )
+      );
+  });
+
+  /**
+   * Loads comments for a post
+   */
+  public commentsLoad$ = createEffect(() => {
+    return this.actions$
+      .pipe(
+        ofType(commentsLoad),
+        withLatestFrom(this.store.select(routerParamFlatMap)),
+        switchMap(([ , routerParams]) => this.postsService.getComments(routerParams['id'])
+          .pipe(
+            map(comments => commentsLoadSuccess({ comments })),
+            catchError(error => of(commentsLoadFailure({ error })))
           )
         )
       );

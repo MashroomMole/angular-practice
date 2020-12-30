@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { homePageInitialState, HomePageState } from './state';
-import { HomePageModel } from '../../shared/model';
+import { HomePageModel } from '../../model/model';
 import { postsLoad, postsLoadSuccess } from './home-page.actions';
 
 // tslint:disable-next-line:variable-name

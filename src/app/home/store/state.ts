@@ -1,4 +1,4 @@
-import { PostModel } from '../../shared/model';
+import { PostModel } from '../../model/model';
 
 export const HOME_PAGE_FEATURE_KEY = 'HOME_PAGE_STATE';
 

@@ -9,7 +9,7 @@ import { HOME_PAGE_FEATURE_KEY } from './store/state';
 import { homeReducers } from './store/home-reducers';
 import { PostThumbnailComponent } from './post-thumbnail/post-thumbnail.component';
 import { HomePageEffects } from './store/home-page.effects';
-import { PostsModule } from '../post-thumbnail/posts.module';
+import { PostsModule } from '../post/posts.module';
 
 @NgModule({
   declarations: [HomeComponent, PostThumbnailComponent],

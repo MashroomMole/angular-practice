@@ -1,0 +1,23 @@
+<div class="post-preview"
+     *ngIf="post$ | async as post">
+    <h2 class="post-title" [textContent]="post?.title">
+    </h2>
+    <h3 class="post-subtitle">{{ post.body }}
+    </h3>
+  <p class="post-meta">Posted by
+    <a [textContent]="post.userId"></a>
+  </p>
+  <app-comments
+    [comments]="comments$ | async"
+    [postId]="postId$ | async">
+  </app-comments>
+</div>
+
+<!-- Home Button -->
+<div>
+  <br />
+  <div class="clearfix text-center mx-auto">
+    <a class="btn btn-secondary pointer" routerLink="/home">Home</a>
+  </div>
+  <br />
+</div>

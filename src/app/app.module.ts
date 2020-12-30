@@ -2,16 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent } from './shell/about/about.component';
 import { PostsService } from './services/get-posts.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PostRouteActivator } from './post-thumbnail/post-route-activator';
-import { HeaderComponent } from './header/header.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { PostRouteActivator } from './post/post-route-activator';
+import { HeaderComponent } from './shell/header/header.component';
+import { NavbarComponent } from './shell/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
-import { PostThumbnailComponent } from './home/post-thumbnail/post-thumbnail.component';
-import { PostDetailsComponent } from './post-thumbnail/post-details.component';
-import { AppCommentsComponent } from './comments/app-comments.component';
+import { PostDetailsComponent } from './post/post-details.component';
 import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -22,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { RouterParamSerializer } from './store/router/router';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './store/reducers';
+import { AppCommentsDetailsComponent } from './comments/app-comments-details.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +34,9 @@ import { reducers } from './store/reducers';
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: 'posts', component: PostThumbnailComponent},
+      {path: 'posts', component: HomeComponent},
       {path: 'posts/:id', component: PostDetailsComponent, canActivate: [PostRouteActivator] },
-      {path: 'posts/:id/comments', component: AppCommentsComponent},
+      {path: 'posts/:id/comments', component: AppCommentsDetailsComponent},
       {path: 'about', component: AboutComponent},
       {path: 'home', component: HomeComponent},
       {path: '', redirectTo: '/home', pathMatch: 'full'},

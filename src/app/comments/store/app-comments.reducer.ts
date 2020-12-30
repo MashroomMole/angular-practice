@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { postCommentsInitialState, PostCommentsState } from './state';
-import { commentsLengthLoad, commentsLengthLoadSuccess, commentsLoad, commentsLoadSuccess } from './app-comments.actions';
+import { commentsLoad, commentsLoadSuccess } from './app-comments.actions';
 
 // tslint:disable-next-line:variable-name
 const _reducer = createReducer(
@@ -15,14 +15,6 @@ const _reducer = createReducer(
       };
     }
   ),
-  on(commentsLengthLoad),
-  on(commentsLengthLoadSuccess,
-    (state, action) => {
-    return {
-      ...state,
-      comments: action.comments
-    };
-    })
 );
 
 // tslint:disable-next-line:typedef

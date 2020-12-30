@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { PostModel } from '../../shared/model';
+import { PostModel } from '../../model/model';
 
 export enum PostActions {
   postPreviewLoadSuccess = '[Post] load post details success',

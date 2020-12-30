@@ -11,8 +11,9 @@ export interface PostModel {
 }
 
 export interface CommentsModel {
+  postId: string;
   commentId: string;
   name: string;
   email: string;
-  commentBody: string;
+  body: string;
 }
