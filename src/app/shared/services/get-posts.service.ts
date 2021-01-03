@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CommentsModel, PostModel } from '../model/model';
+import { CommentsModel, EntryModel, PostModel } from '../model/model';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
@@ -26,7 +26,7 @@ export class PostsService {
   }
 
 
-  getAllPosts(): Observable<CommentsModel[]> {
+  getAllPosts(): Observable<PostModel[]> {
     return this.http.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts')
       .pipe(
         map((data: PostModel[] ) => {
@@ -40,6 +40,18 @@ export class PostsService {
     return this.http.get<CommentsModel[]>('https://jsonplaceholder.typicode.com/posts/' + postId + '/comments')
       .pipe(catchError(this.handleError<CommentsModel[]>('getComments', [])));
   }
+
+  // Reusing the same API for GuestBook component
+  getGuestBookEntries(): Observable<EntryModel[]> {
+    return this.http.get<EntryModel[]>('https://jsonplaceholder.typicode.com/posts')
+      .pipe(
+        map((data: EntryModel[] ) => {
+          return data.reverse();
+        }),
+        catchError(this.handleError<EntryModel[]>('getGuestBookEntries', [])));
+  }
+
+
 
   /**
    * Handles any error encountered while sending http request

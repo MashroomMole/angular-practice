@@ -10,6 +10,7 @@ import { homeReducers } from './store/home-reducers';
 import { PostThumbnailComponent } from './post-thumbnail/post-thumbnail.component';
 import { HomePageEffects } from './store/home-page.effects';
 import { PostsModule } from '../post/posts.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [HomeComponent, PostThumbnailComponent],
@@ -21,7 +22,8 @@ import { PostsModule } from '../post/posts.module';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    PostsModule
+    PostsModule,
+    MatPaginatorModule
 
   ]
 })

@@ -1,7 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { homePageInitialState, HomePageState } from './state';
-import { HomePageModel } from '../../model/model';
-import { postsLoad, postsLoadSuccess } from './home-page.actions';
+import { postsLoad, postsLoadFailure, postsLoadSuccess } from './home-page.actions';
 
 // tslint:disable-next-line:variable-name
 const _reducer = createReducer(
@@ -9,13 +8,21 @@ const _reducer = createReducer(
   on(postsLoad),
   on(
     postsLoadSuccess,
-    (state, action): HomePageModel => {
+    (state, action): HomePageState => {
       return {
         ...state,
         posts: action.posts,
+        error: ''
       };
     }
-  )
+  ),
+  on(postsLoadFailure, (state, action): HomePageState => {
+    return {
+      ...state,
+      posts: [],
+      error: action.error
+    };
+  }),
 );
 
 // tslint:disable-next-line:typedef

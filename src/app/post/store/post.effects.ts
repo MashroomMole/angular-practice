@@ -2,7 +2,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PostsService } from '../../services/get-posts.service';
+import { PostsService } from '../../shared/services/get-posts.service';
 import { routerParamFlatMap } from '../../store/router/router-selectors';
 import { postLoadFailure, postPreviewLoad, postPreviewLoadSuccess } from './post-actions';
 import { of } from 'rxjs';

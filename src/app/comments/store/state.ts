@@ -1,13 +1,15 @@
-import { CommentsModel } from '../../model/model';
+import { CommentsModel } from '../../shared/model/model';
 
 export const POST_COMMENTS_FEATURE_KEY = 'POST_COMMENTS';
 
 export interface PostCommentsState {
   comments: Array<CommentsModel>;
+  error: string;
 }
 
 export const postCommentsInitialState: PostCommentsState = {
-  comments: []
+  comments: [],
+  error: ''
 };
 
 export interface CommentState {

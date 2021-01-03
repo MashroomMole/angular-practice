@@ -1,0 +1,33 @@
+<h2 style="text-align: left; margin-bottom: 15px; color: lightslategray;">Guest Book</h2>
+<!-- Add new entry button -->
+<ng-container>
+  <div style="float: right">
+    <button class="btn btn-secondary pointer" (click)="openDialog()">
+      {{disableButton ? "..." : "Add feedback"}}
+    </button>
+  </div>
+</ng-container>
+
+<app-guest-book-form
+  *ngIf="hideDialog" (submit)="handleSave(disableButton)">
+</app-guest-book-form>
+
+  <div style="display: inline-flex" class="comments">
+    <div
+      *ngIf="entries$ | async as entries">
+      <div
+        *ngFor= "let entry of entries">
+        <h3 class="comments-body">
+          {{entry?.body}}
+
+        </h3>
+        <p class="comments-meta">By:
+          <a href="" [textContent]="entry.userId"></a>
+        </p>
+      </div>
+      <mat-paginator [length]="entries?.length" [pageSize]="3"
+                     [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+    </div>
+
+  </div>
+

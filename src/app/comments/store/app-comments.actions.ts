@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CommentsModel } from '../../model/model';
+import { CommentsModel } from '../../shared/model/model';
 
 export enum AppCommentsActions {
   commentsLoadSuccess = '[Comments] load comments  success',
@@ -11,8 +11,7 @@ export enum AppCommentsActions {
 
 export const navigateToComments = createAction(AppCommentsActions.navigateToComments);
 
-
-export const commentsLoad = createAction(AppCommentsActions.commentsLoad, props<{postId: string}>());
+export const commentsLoad = createAction(AppCommentsActions.commentsLoad);
 
 export const commentsLoadSuccess = createAction(
   AppCommentsActions.commentsLoadSuccess,

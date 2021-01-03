@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
-import { PostsService } from '../services/get-posts.service';
+import { PostsService } from '../shared/services/get-posts.service';
 
 @Injectable()
 export class PostRouteActivator implements CanActivate{

@@ -17,3 +17,14 @@ export interface CommentsModel {
   email: string;
   body: string;
 }
+
+export interface GuestBookModel {
+  entries: Array<EntryModel>;
+}
+
+export interface EntryModel {
+  id: string;
+  userId: string;
+  title: string;
+  body: string;
+}

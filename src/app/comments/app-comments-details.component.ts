@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommentsModel } from '../model/model';
+import { CommentsModel } from '../shared/model/model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/reducers';
 import { Observable } from 'rxjs';
@@ -15,14 +15,11 @@ export class AppCommentsDetailsComponent implements OnInit{
 
   comments$: Observable<CommentsModel[]>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>) {}
 
-  }
   ngOnInit(): void {
     this.store.dispatch(navigateToComments());
     this.comments$ = this.store.select(selectComments);
   }
-
-
 }
 

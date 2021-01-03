@@ -18,9 +18,9 @@ h3.post-content {
 
 h3.comments-body {
   padding-top: 20px;
-  font-weight: 200;
+  font-weight: 100;
   margin: 0 0 10px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 p a {
   text-decoration: underline;
@@ -345,6 +345,7 @@ header.masthead .post-heading .meta a {
 
 .comments>a {
   color: #212529;
+  margin-bottom: 5px;
 }
 
 .comments>a:focus,
@@ -355,10 +356,15 @@ header.masthead .post-heading .meta a {
 
 .comments>a>.comments-body {
   font-weight: 200;
-  margin: 0 0 10px;
+  margin: 0 0 5px;
+
 }
 
-.comments>.comments-meta {
+.comments>p> {
+  line-height: 1.5;
+  margin: 20px 0;
+}
+.comments-meta {
   font-size: 15px;
   font-style: italic;
   margin-top: 0;
@@ -460,6 +466,7 @@ footer .copyright {
 }
 
 .btn {
+  width: 170px ;
   font-size: 14px;
   font-weight: 800;
   padding: 15px 25px;

@@ -7,12 +7,14 @@
        *ngFor= "let comment of comments">
       <h3 class="comments-body">
         {{comment?.body}}
+
       </h3>
-        <p class="comments-meta">Commented by:
-          <a [textContent]="comment.name"></a>
-          <br />
-          <a [textContent]="comment.email"></a>
-        </p>
+      <p class="comments-meta">Commented by:
+        <a [textContent]="comment.name"></a>
+        <br />
+        <a href="mailto:" [textContent]="comment.email"></a>
+      </p>
+
   </div>
 </div>
 
@@ -20,7 +22,7 @@
 <div>
   <br />
   <div class="clearfix text-center mx-auto">
-      <a class="btn btn-secondary pointer" routerLink="..">Back to the Post</a>
+      <a class="btn btn-secondary pointer" routerLink="..">Back &rarr;</a>
   </div>
   <br />
 </div>

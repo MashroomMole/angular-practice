@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PostModel } from '../../model/model';
+import { PostModel } from '../../shared/model/model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,6 @@ constructor(private router: Router) {}
 
   public navigateToPost(postId: string): Promise<boolean> {
     return this.router.navigate(['../posts/' + postId]);
-
   }
 }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CommentsModel, PostModel } from '../model/model';
+import { CommentsModel, PostModel } from '../shared/model/model';
 import { Observable } from 'rxjs';
 import { selectPostState } from './store/post-selector';
 import { Store } from '@ngrx/store';
@@ -20,22 +19,12 @@ export class PostDetailsComponent implements OnInit{
   public post$: Observable<PostModel> = this.store.select(selectPostState);
   public readonly postId$: Observable<string> = this.store.select(selectPostID);
 
-  postId: string;
-
-
-
-  constructor(private store: Store<AppState>, private router: Router) {
-
+  constructor(private store: Store<AppState>) {
   }
-
 
   public ngOnInit(): void {
     this.store.dispatch(postPreviewLoad());
-    this.store.dispatch(commentsLoad({postId: this.postId}));
+    this.store.dispatch(commentsLoad());
 
-  }
-
-  public navigateToComments(): Promise<boolean> {
-    return this.router.navigate(['../posts/' + this.postId + '/comments']);
   }
 }
