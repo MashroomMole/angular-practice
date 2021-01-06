@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { PostEffects } from './store/post.effects';
 import { AppCommentsComponent } from './comments-preview/app-comments.component';
 import { AppCommentsModule } from '../comments/app-comments.module';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
   declarations: [PostDetailsComponent, AppCommentsComponent],
@@ -21,6 +22,7 @@ import { AppCommentsModule } from '../comments/app-comments.module';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    UserModule,
     AppCommentsModule
   ]
 })

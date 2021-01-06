@@ -28,10 +28,7 @@ p a {
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h3 {
   font-weight: 800;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -57,39 +54,6 @@ blockquote {
   font-size: 36px;
   font-weight: 700;
   margin-top: 60px;
-}
-
-.caption {
-  font-size: 14px;
-  font-style: italic;
-  display: block;
-  margin: 0;
-  padding: 10px;
-  text-align: center;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-::-moz-selection {
-  color: #fff;
-  background: #0085A1;
-  text-shadow: none;
-}
-
-::selection {
-  color: #fff;
-  background: #0085A1;
-  text-shadow: none;
-}
-
-img::selection {
-  color: #fff;
-  background: transparent;
-}
-
-img::-moz-selection {
-  color: #fff;
-  background: transparent;
 }
 
 #mainNav {
@@ -304,24 +268,18 @@ header.masthead .post-heading .meta a {
   }
 }
 
-.post-preview>a {
+.post-preview> {
   color: #212529;
-}
-
-.post-preview>a:focus,
-.post-preview>a:hover {
-  text-decoration: none;
-  color: #0085A1;
 }
 
 .post-preview>a>.post-title {
   font-size: 30px;
   margin-top: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .post-preview>a>.post-subtitle {
-  font-weight: 300;
+  font-weight: 200;
   margin: 0 0 10px;
 }
 
@@ -343,15 +301,10 @@ header.masthead .post-heading .meta a {
   color: #0085A1;
 }
 
-.comments>a {
-  color: #212529;
-  margin-bottom: 5px;
-}
-
-.comments>a:focus,
-.comments>a:hover {
-  text-decoration: none;
-  color: #0085A1;
+.comments>.comments-title {
+  color: lightslategray;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 .comments>a>.comments-body {

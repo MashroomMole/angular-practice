@@ -12,14 +12,22 @@ import {
 // tslint:disable-next-line:variable-name
 const _reducer = createReducer(
   guestBookInitialState,
-  on(entriesLoad),
+  on(entriesLoad,
+    (state): GuestBookState => {
+      return {
+          ...state,
+          loading: true
+      };
+    }
+  ),
   on(
     entriesLoadSuccess,
     (state, action): GuestBookState => {
       return {
         ...state,
         entries: action.entries,
-        error: ''
+        error: '',
+        loading: false
       };
     }
   ),
@@ -29,7 +37,8 @@ const _reducer = createReducer(
       return {
         ...state,
         entries: [],
-        error: action.error
+        error: action.error,
+        loading: false
       };
     }
   ),

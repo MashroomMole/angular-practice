@@ -1,0 +1,21 @@
+.dialog-form form {
+  height: 100%;
+  width: 100%;
+}
+
+.mat-dialog-title {
+  color: lightslategray;
+  font-weight: 200;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.full-width {
+  width: 100%;
+}

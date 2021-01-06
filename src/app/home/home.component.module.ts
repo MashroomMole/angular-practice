@@ -11,6 +11,7 @@ import { PostThumbnailComponent } from './post-thumbnail/post-thumbnail.componen
 import { HomePageEffects } from './store/home-page.effects';
 import { PostsModule } from '../post/posts.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent, PostThumbnailComponent],
@@ -23,8 +24,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ReactiveFormsModule,
     RouterModule,
     PostsModule,
-    MatPaginatorModule
-
+    MatPaginatorModule,
+    SharedModule
   ]
 })
 export class HomeComponentModule {}

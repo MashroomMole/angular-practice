@@ -5,14 +5,22 @@ import { postsLoad, postsLoadFailure, postsLoadSuccess } from './home-page.actio
 // tslint:disable-next-line:variable-name
 const _reducer = createReducer(
   homePageInitialState,
-  on(postsLoad),
+  on(postsLoad,
+    (state): HomePageState => {
+    return {
+    ...state,
+      loading: true
+    };
+  }
+  ),
   on(
     postsLoadSuccess,
     (state, action): HomePageState => {
       return {
         ...state,
         posts: action.posts,
-        error: ''
+        error: '',
+        loading: false
       };
     }
   ),
@@ -20,7 +28,8 @@ const _reducer = createReducer(
     return {
       ...state,
       posts: [],
-      error: action.error
+      error: action.error,
+      loading: false
     };
   }),
 );

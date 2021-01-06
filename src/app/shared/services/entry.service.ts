@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EntryModel } from '../model/model';
@@ -11,6 +11,17 @@ import { EntryModel } from '../model/model';
 export class GuestBookService {
 
   constructor(private http: HttpClient) {}
+
+  // Reusing the same API for GuestBook component
+  getGuestBookEntries(): Observable<EntryModel[]> {
+    return this.http.get<EntryModel[]>('https://jsonplaceholder.typicode.com/posts')
+      .pipe(
+        map((data: EntryModel[] ) => {
+          return data.reverse();
+        }),
+        catchError(this.handleError));
+  }
+
   public AddEntry(entry: EntryModel): Observable<EntryModel> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=UTF-8' });
     const newEntry = { ...entry  , id: null };

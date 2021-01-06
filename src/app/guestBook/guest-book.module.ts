@@ -9,9 +9,14 @@ import { GUEST_BOOK_FEATURE_KEY } from './store/state';
 import { guestBookReducers } from './store/guest-book.reducers';
 import { GuestBookEffects } from './store/guest-book.effects';
 import { GuestBookService } from '../shared/services/entry.service';
-import { GuestBookFormComponent } from './guest-book-form/guest-book-form.component';
+import { GuestBookDialogComponent } from './guest-book-dialog/guest-book-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SharedModule } from '../shared/shared.module';
+import { UserModule } from '../user/user.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 const routes: Routes = [
@@ -19,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [GuestBookComponent, GuestBookFormComponent],
+  declarations: [GuestBookComponent, GuestBookDialogComponent],
   exports: [
   ],
   imports: [
@@ -30,11 +35,15 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule,
     FormsModule,
-    MatDialogModule,
     MatPaginatorModule,
+    SharedModule,
+    UserModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
-  providers: [GuestBookService],
-  entryComponents: [GuestBookFormComponent]
+  providers: [GuestBookService]
 
 })
 export class GuestBookModule {}

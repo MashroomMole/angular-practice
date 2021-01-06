@@ -3,7 +3,7 @@ import { PostModel } from '../shared/model/model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { postsLoad } from './store/home-page.actions';
-import { selectPosts } from './store/home-page.selectors';
+import { selectPosts, selectPostsLoading } from './store/home-page.selectors';
 import { AppState } from '../store/reducers';
 
 @Component({
@@ -12,7 +12,8 @@ import { AppState } from '../store/reducers';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  posts$: Observable<PostModel[]>;
+  public posts$: Observable<PostModel[]>;
+  public loading$: Observable<boolean> = this.store.select(selectPostsLoading);
 
   constructor(private store: Store<AppState>) {}
 

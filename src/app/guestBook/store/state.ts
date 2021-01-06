@@ -5,11 +5,13 @@ export const GUEST_BOOK_FEATURE_KEY = 'GUEST_BOOK_STATE';
 export interface GuestBookState {
   entries: Array<EntryModel>;
   error: string;
+  loading: boolean;
 }
 
 export const guestBookInitialState: GuestBookState = {
   entries: [],
-  error: ''
+  error: '',
+  loading: false
 };
 
 

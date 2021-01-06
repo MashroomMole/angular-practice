@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './shell/about/about.component';
-import { PostsService } from './shared/services/get-posts.service';
+import { PostsService } from './shared/services/posts.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PostRouteActivator } from './post/post-route-activator';
 import { HeaderComponent } from './shell/header/header.component';
 import { NavbarComponent } from './shell/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
@@ -22,6 +21,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './store/reducers';
 import { AppCommentsDetailsComponent } from './comments/app-comments-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -37,14 +37,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'posts', component: HomeComponent},
-      {path: 'posts/:id', component: PostDetailsComponent, canActivate: [PostRouteActivator] },
+      {path: 'posts/:id', component: PostDetailsComponent},
       {path: 'posts/:id/comments', component: AppCommentsDetailsComponent},
       {path: 'about', component: AboutComponent},
       {path: 'home', component: HomeComponent},
       {path: 'guestBook', loadChildren: () => import('./guestBook/guest-book.module').then(m => m.GuestBookModule)},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
-      // {path: '/404', component: PageNotFound}
-      ]),
+    ]),
     ReactiveFormsModule,
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot({
@@ -53,10 +52,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     HomeComponentModule,
+    SharedModule,
   ],
   providers: [
     PostsService,
-    PostRouteActivator
   ],
   bootstrap: [AppComponent]
 })

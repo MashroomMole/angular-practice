@@ -1,0 +1,24 @@
+<div class="dialog-form">
+  <form novalidate
+      [formGroup]="form"
+    >
+      <h1 mat-dialog-title>Your feedback:</h1>
+      <mat-dialog-content>
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input type="name" matInput formControlName="userId"
+                 placeholder="olga.zoldaka@cv.lv">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Message</mat-label>
+          <textarea type="name" matInput formControlName="body"
+                 placeholder="Type your message here">
+          </textarea>
+        </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+      <button class="btn btn-secondary" mat-dialog-close>Cancel</button>
+      <button  class="btn btn-secondary" [disabled]="!form.valid" (click)="form.valid && onSubmit()">Submit</button>
+      </mat-dialog-actions>
+</form>
+</div>

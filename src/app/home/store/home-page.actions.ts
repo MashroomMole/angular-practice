@@ -16,6 +16,6 @@ export const postsLoadSuccess = createAction(
 
 export const postsLoadFailure = createAction(
   HomePageActions.postsLoadFailure,
-  props< { error: string} >()
+  props< { error: string } >()
 );
 

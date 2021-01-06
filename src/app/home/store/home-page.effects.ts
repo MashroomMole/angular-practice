@@ -3,10 +3,10 @@ import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operato
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { PostsService } from '../../shared/services/get-posts.service';
+import { PostsService } from '../../shared/services/posts.service';
 import { postsLoad, postsLoadFailure, postsLoadSuccess } from './home-page.actions';
 import { AppState } from '../../store/reducers';
-import { selectRouterState } from '../../store/router/router-selectors';
+import { selectUrl } from '../../store/router/router-selectors';
 
 /**
  * HomePageEffects - communicates with server via HTTP
@@ -20,9 +20,9 @@ export class HomePageEffects {
     return this.actions$
       .pipe(
         ofType(postsLoad),
-        withLatestFrom(this.store.select(selectRouterState)),
-        filter(([, router]) => {
-            return router.state.url === '/home';
+        withLatestFrom(this.store.select(selectUrl)),
+        filter(([, url]) => {
+            return url === '/home';
           }
         ),
         switchMap(() => this.postsService.getFistFivePosts()
@@ -41,9 +41,9 @@ export class HomePageEffects {
     return this.actions$
       .pipe(
         ofType(postsLoad),
-        withLatestFrom(this.store.select(selectRouterState)),
-        filter(([, router]) => {
-        return router.state.url === '/posts';
+        withLatestFrom(this.store.select(selectUrl)),
+        filter(([, url]) => {
+        return url === '/posts';
         }
         ),
         switchMap(() => this.postsService.getAllPosts()

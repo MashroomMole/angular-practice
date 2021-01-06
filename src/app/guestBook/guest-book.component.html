@@ -1,18 +1,13 @@
 <h2 style="text-align: left; margin-bottom: 15px; color: lightslategray;">Guest Book</h2>
+<app-loading *ngIf="loading$ | async"></app-loading>
 <!-- Add new entry button -->
-<ng-container>
+<ng-container *ngIf="!(loading$ | async)">
   <div style="float: right">
-    <button class="btn btn-secondary pointer" (click)="openDialog()">
+    <button class="btn btn-secondary pointer" [disabled]="disableButton" (click)="openDialog()">
       {{disableButton ? "..." : "Add feedback"}}
     </button>
   </div>
-</ng-container>
-
-<app-guest-book-form
-  *ngIf="hideDialog" (submit)="handleSave(disableButton)">
-</app-guest-book-form>
-
-  <div style="display: inline-flex" class="comments">
+  <div style="display: inline-flex" class="comments" >
     <div
       *ngIf="entries$ | async as entries">
       <div
@@ -28,6 +23,9 @@
       <mat-paginator [length]="entries?.length" [pageSize]="3"
                      [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
     </div>
-
   </div>
+</ng-container>
+
+
+
 

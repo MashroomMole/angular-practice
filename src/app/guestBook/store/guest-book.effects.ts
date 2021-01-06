@@ -3,7 +3,6 @@ import { catchError, concatMap, map, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { PostsService } from '../../shared/services/get-posts.service';
 import { AppState } from '../../store/reducers';
 import {
   createEntry,
@@ -22,14 +21,13 @@ import { GuestBookService } from '../../shared/services/entry.service';
 export class GuestBookEffects {
 
   /**
-   * Loads Guest book entiries
+   * Loads Guest book entries
    */
   public entriesLoad$ = createEffect(() => {
     return this.actions$
       .pipe(
         ofType(entriesLoad),
-
-        switchMap(() => this.postsService.getGuestBookEntries()
+        switchMap(() => this.guestBookService.getGuestBookEntries()
           .pipe(
             map(entries => entriesLoadSuccess({ entries })),
             catchError(error => of(entriesLoadFailure({ error })))
@@ -57,7 +55,6 @@ export class GuestBookEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private postsService: PostsService,
     private guestBookService: GuestBookService
   ) {}
 }

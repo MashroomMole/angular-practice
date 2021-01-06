@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { postInitialState, PostState } from './state';
-import { postPreviewLoad, postPreviewLoadSuccess } from './post-actions';
+import { postPreviewLoad, postPreviewLoadFailure, postPreviewLoadSuccess } from './post-actions';
 
 
 // tslint:disable-next-line:variable-name
@@ -16,6 +16,16 @@ const _reducer = createReducer(
         title: action.post.title,
         body: action.post.body,
         userId: action.post.userId,
+        error: ''
+      };
+    }
+  ),
+  on(
+    postPreviewLoadFailure,
+    (state, action): PostState => {
+      return {
+        ...state,
+        error: action.error
       };
     }
   )

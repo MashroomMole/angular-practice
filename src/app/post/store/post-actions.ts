@@ -14,7 +14,7 @@ export const postPreviewLoadSuccess = createAction(
   props< { post: PostModel} >()
 );
 
-export const postLoadFailure = createAction(
+export const postPreviewLoadFailure = createAction(
   PostActions.postPreviewLoadFailure,
   props< { error: string} >()
 );
