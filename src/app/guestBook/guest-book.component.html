@@ -14,11 +14,13 @@
         *ngFor= "let entry of entries">
         <h3 class="comments-body">
           {{entry?.body}}
-
         </h3>
-        <p class="comments-meta">By:
-          <a href="" [textContent]="entry.userId"></a>
-        </p>
+
+          <p class="comments-meta">By:
+            <a [textContent]="entry.userId"></a>
+            <button mat-button (click)="openUserInfo(entry.userId)">Click for details...</button>
+          </p>
+
       </div>
       <mat-paginator [length]="entries?.length" [pageSize]="3"
                      [pageSizeOptions]="[3, 5, 10]"></mat-paginator>

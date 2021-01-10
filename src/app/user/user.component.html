@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="user-info-dialog">
+<h1 mat-dialog-title>User Information</h1>
+<div *ngIf="userModel$ | async as userModel">
+  <mat-form-field class="full-width">
+    <mat-label>ID</mat-label>
+    <input matInput disabled [(ngModel)]="userModel.id">
 
-</body>
-</html>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input matInput disabled [(ngModel)]="userModel.name">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Username</mat-label>
+    <input matInput disabled [(ngModel)]="userModel.username">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput disabled [(ngModel)]="userModel.email">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Address</mat-label>
+    <input matInput disabled [(ngModel)]="userModel.address">
+  </mat-form-field>
+
+  <mat-form-field class="full-width" [(ngModel)]="userModel.phone">
+    <mat-label>Phone</mat-label>
+    <input matInput disabled [(ngModel)]="userModel.phone">
+  </mat-form-field>
+
+  <mat-form-field class="full-width" [(ngModel)]="userModel.website">
+    <mat-label>Website</mat-label>
+    <input matInput disabled>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" [(ngModel)]="userModel.company">
+    <mat-label>Company</mat-label>
+    <input matInput disabled>
+  </mat-form-field>
+  <pre>{{userModel.website}}</pre>
+
+</div>
+</div>

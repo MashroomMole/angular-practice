@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentsModel, PostModel } from '../shared/model/model';
 import { Observable } from 'rxjs';
-import { selectPostState } from './store/post-selector';
+import { selectPostState } from './store/post-selectors';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/reducers';
 import { postPreviewLoad } from './store/post-actions';

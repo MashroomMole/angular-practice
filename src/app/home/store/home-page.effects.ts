@@ -25,12 +25,15 @@ export class HomePageEffects {
             return url === '/home';
           }
         ),
-        switchMap(() => this.postsService.getFistFivePosts()
-          .pipe(
-            map(posts => postsLoadSuccess({ posts })),
-            catchError(error => of(postsLoadFailure({ error })))
-          )
-        )
+        switchMap(() => {
+          return this.postsService.getFistFivePosts()
+            .pipe(
+              map(posts => {
+                return postsLoadSuccess({posts});
+              }),
+              catchError(error => of(postsLoadFailure({error})))
+            );
+        })
       );
   });
 

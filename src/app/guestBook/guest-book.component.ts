@@ -3,11 +3,15 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../store/reducers';
 import { createEntry, entriesLoad } from './store/guest-book.actions';
 import { Observable } from 'rxjs';
-import { EntryModel } from '../shared/model/model';
+import { EntryModel, UserModel } from '../shared/model/model';
 import { selectEntries, selectEntriesLoading } from './store/guest-book.selectors';
 import { GuestBookDialogComponent } from './guest-book-dialog/guest-book-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
+import { UserComponent } from '../user/user.component';
+import { selectUser } from '../user/store/user.selectors';
+import { userLoad } from '../user/store/user.actions';
+import { UserState } from '../user/store/state';
 
 @Component({
   selector: 'app-guest-book',
@@ -18,10 +22,11 @@ export class GuestBookComponent implements OnInit {
   public entries$: Observable<EntryModel[]>;
   public loading$: Observable<boolean> = this.store.select(selectEntriesLoading);
   public disableButton: boolean;
-  public guestBookFormComponentRef: MatDialogRef<GuestBookDialogComponent>;
-
-
-  constructor(private store: Store<AppState>, private dialog: MatDialog) { }
+  public entryDialogRef: MatDialogRef<GuestBookDialogComponent>;
+  public userDialogRef: MatDialogRef<UserComponent>;
+  public user$: Observable<UserState>;
+  public data: Observable<UserModel>;
+  constructor(private store: Store<AppState>, private dialog: MatDialog, ) { }
 
   public ngOnInit(): void {
 
@@ -32,7 +37,7 @@ export class GuestBookComponent implements OnInit {
 
   public openDialog(): void {
     this.disableButton = true;
-    this.guestBookFormComponentRef = this.dialog.open(
+    this.entryDialogRef = this.dialog.open(
       GuestBookDialogComponent, {
       hasBackdrop: false,
         width: 'auto',
@@ -40,7 +45,7 @@ export class GuestBookComponent implements OnInit {
         maxHeight: '100vh',
         maxWidth: '100vw'
       });
-    this.guestBookFormComponentRef
+    this.entryDialogRef
       .afterClosed()
       .pipe(
         map(
@@ -53,4 +58,26 @@ export class GuestBookComponent implements OnInit {
       )
       .subscribe(() => this.disableButton = !this.disableButton);
   }
+
+  public openUserInfo(userId: string): void {
+    console.log('click', userId);
+    // this.store.dispatch(userLoad({id: userId}));
+
+    this.store.dispatch(userLoad({id: userId}));
+    this.user$ = this.store.select(selectUser);
+
+    this.userDialogRef = this.dialog.open(UserComponent, {
+        hasBackdrop: true,
+        closeOnNavigation: true,
+        width: '500px',
+        height: '600px',
+        maxHeight: '100vh',
+        maxWidth: '100vw',
+      });
+    console.log(this.data);
+
+    this.userDialogRef.afterClosed();
+  }
+
+
 }

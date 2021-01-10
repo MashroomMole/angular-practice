@@ -35,6 +35,6 @@ const _reducer = createReducer(
 );
 
 // tslint:disable-next-line:typedef
-export function homeReducers(state: HomePageState | undefined, action: Action) {
+export function homePageReducers(state: HomePageState | undefined, action: Action) {
   return _reducer(state, action);
 }

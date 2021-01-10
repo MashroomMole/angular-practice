@@ -13,31 +13,47 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   cursor: pointer;
 }
 
-.mat-dialog-container
-{
-  padding: 0 0 24px 0;
-  height: 300px;
-  min-width: 600px;
-  max-width: 2050px;
-  width: 2050px;
-  border-radius: 5px;
-  margin: 10px 60px 10px 10px;
+/*.mat-dialog-container*/
+/*{*/
+/*  padding: 0 0 24px 0;*/
+/*  height: 300px;*/
+/*  min-width: 600px;*/
+/*  max-width: 2050px;*/
+/*  width: 2050px;*/
+/*  border-radius: 5px;*/
+/*  margin: 10px 60px 10px 10px;*/
+/*}*/
+
+/*.mat-dialog-actions*/
+/*{*/
+/*  display: flex;*/
+/*  min-width: 40px;*/
+/*  flex: 0.2 0 40px;*/
+/*  justify-content: flex-end;*/
+/*  !*color: grey;*!*/
+/*}*/
+
+/*.mat-dialog-actions .btn*/
+/*{*/
+/*  float: left;*/
+/*}*/
+
+/*.cdk-overlay-container, .cdk-global-overlay-wrapper{*/
+/*  border-radius: 5px;*/
+/*}*/
+.mat-dialog-title {
+  color: lightslategray;
+  font-weight: 200;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
 }
 
-.mat-dialog-actions
-{
+.mat-dialog-actions {
   display: flex;
-  min-width: 40px;
-  flex: 0.2 0 40px;
-  justify-content: flex-end;
-  /*color: grey;*/
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.mat-dialog-actions .btn
-{
-  float: left;
-}
-
-.cdk-overlay-container, .cdk-global-overlay-wrapper{
-  border-radius: 5px;
+.full-width {
+  width: 100%;
 }

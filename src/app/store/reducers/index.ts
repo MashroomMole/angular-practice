@@ -5,6 +5,7 @@ import { POST_FEATURE_KEY, PostState } from '../../post/store/state';
 import { HOME_PAGE_FEATURE_KEY, HomePageState } from '../../home/store/state';
 import { POST_COMMENTS_FEATURE_KEY, PostCommentsState } from '../../comments/store/state';
 import { GUEST_BOOK_FEATURE_KEY, GuestBookState } from '../../guestBook/store/state';
+import { USER_FEATURE_KEY, UserState } from '../../user/store/state';
 
 
 export interface State {
@@ -21,4 +22,5 @@ export interface AppState {
   [HOME_PAGE_FEATURE_KEY]?: HomePageState;
   [POST_COMMENTS_FEATURE_KEY]?: PostCommentsState;
   [GUEST_BOOK_FEATURE_KEY]?: GuestBookState;
+  [USER_FEATURE_KEY]?: UserState;
 }

@@ -17,6 +17,7 @@ import { UserModule } from '../user/user.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { UserService } from '../shared/services/user.service';
 
 
 const routes: Routes = [
@@ -43,7 +44,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [GuestBookService]
+  providers: [GuestBookService, UserService]
 
 })
 export class GuestBookModule {}

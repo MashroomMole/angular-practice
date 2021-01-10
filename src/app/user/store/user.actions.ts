@@ -7,11 +7,11 @@ export enum UserActions {
   userLoadFailure = '[User] load user details failure'
 }
 
-export const userLoad = createAction(UserActions.userLoad);
+export const userLoad = createAction(UserActions.userLoad, props<{ id: string}>());
 
 export const userLoadSuccess = createAction(
   UserActions.userLoadSuccess,
-  props< { user: UserModel} >()
+  props< { model: UserModel} >()
 );
 
 export const userLoadFailure = createAction(

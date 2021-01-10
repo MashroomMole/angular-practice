@@ -7,7 +7,6 @@ export interface PostModel {
   userId: string;
   title: string;
   body: string;
-  comments: Array<CommentsModel>;
 }
 
 export interface CommentsModel {
@@ -34,21 +33,8 @@ export interface UserModel {
   name: string;
   username: string;
   email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lgn: string;
-    }
-  };
+  address: string;
   phone: string;
   website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
+  company: string;
 }

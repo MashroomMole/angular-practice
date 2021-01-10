@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { HOME_PAGE_FEATURE_KEY } from './store/state';
-import { homeReducers } from './store/home-reducers';
+import { homePageReducers } from './store/home-page.reducers';
 import { PostThumbnailComponent } from './post-thumbnail/post-thumbnail.component';
 import { HomePageEffects } from './store/home-page.effects';
 import { PostsModule } from '../post/posts.module';
@@ -18,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
   exports: [
   ],
   imports: [
-    StoreModule.forFeature(HOME_PAGE_FEATURE_KEY, homeReducers),
+    StoreModule.forFeature(HOME_PAGE_FEATURE_KEY, homePageReducers),
     EffectsModule.forFeature([HomePageEffects]),
     CommonModule,
     ReactiveFormsModule,
