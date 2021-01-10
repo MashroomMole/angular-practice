@@ -8,7 +8,6 @@ import { GuestBookComponent } from './guest-book.component';
 import { GUEST_BOOK_FEATURE_KEY } from './store/state';
 import { guestBookReducers } from './store/guest-book.reducers';
 import { GuestBookEffects } from './store/guest-book.effects';
-import { GuestBookService } from '../shared/services/entry.service';
 import { GuestBookDialogComponent } from './guest-book-dialog/guest-book-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -17,7 +16,7 @@ import { UserModule } from '../user/user.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UserService } from '../shared/services/user.service';
+import { ApiService } from '../shared/services/api-service';
 
 
 const routes: Routes = [
@@ -44,7 +43,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [GuestBookService, UserService]
+  providers: [ApiService]
 
 })
 export class GuestBookModule {}

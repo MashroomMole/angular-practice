@@ -18,6 +18,10 @@ import { UserState } from '../user/store/state';
   templateUrl: './guest-book.component.html',
   styleUrls: ['./guest-book.component.css']
 })
+/**
+ * GuestBookComponent renders guest book main page,
+ * manages GuestBookDialog and UserComponent state
+ */
 export class GuestBookComponent implements OnInit {
   public entries$: Observable<EntryModel[]>;
   public loading$: Observable<boolean> = this.store.select(selectEntriesLoading);
@@ -60,9 +64,6 @@ export class GuestBookComponent implements OnInit {
   }
 
   public openUserInfo(userId: string): void {
-    console.log('click', userId);
-    // this.store.dispatch(userLoad({id: userId}));
-
     this.store.dispatch(userLoad({id: userId}));
     this.user$ = this.store.select(selectUser);
 

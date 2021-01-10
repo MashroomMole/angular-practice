@@ -7,6 +7,11 @@ import { Router } from '@angular/router';
   templateUrl: './post-thumbnail.component.html',
 })
 
+
+/**
+ * PostThumbnailComponent renders details
+ *  for each post on home page
+ */
 export class PostThumbnailComponent {
   @Input() public post: PostModel;
 

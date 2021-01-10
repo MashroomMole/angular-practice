@@ -12,7 +12,7 @@ import {
   entriesLoadFailure,
   entriesLoadSuccess
 } from './guest-book.actions';
-import { GuestBookService } from '../../shared/services/entry.service';
+import { ApiService } from '../../shared/services/api-service';
 
 /**
  * GuestBookEffects - communicates with server via HTTP
@@ -55,6 +55,6 @@ export class GuestBookEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private guestBookService: GuestBookService
+    private guestBookService: ApiService
   ) {}
 }

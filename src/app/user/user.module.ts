@@ -5,12 +5,12 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/d
 import { EffectsModule } from '@ngrx/effects';
 import { USER_FEATURE_KEY } from './store/state';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './store/user.reducer';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserEffects } from './store/user.effects';
 import { MatCardModule } from '@angular/material/card';
+import { userReducer } from './store/user.reducer';
 
 @NgModule({
   declarations: [UserComponent],

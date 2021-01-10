@@ -1,37 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppState } from '../store/reducers';
 import { Store } from '@ngrx/store';
-import { UserService } from '../shared/services/user.service';
+import { ApiService } from '../shared/services/api-service';
 import { Observable } from 'rxjs';
 import { UserModel } from '../shared/model/model';
-import { selectUserModel } from './store/user.selectors';
+import { selectUser, selectUserModel } from './store/user.selectors';
+import { clearUserModel } from './store/user.actions';
+import { UserState } from './store/state';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
 
+/**
+ * UserComponent renders user details pop-up
+ * clears user state on destroy
+ */
+export class UserComponent implements OnInit, OnDestroy {
   userModel$: Observable<UserModel>;
-
-
+  userState$: Observable<UserState>;
 
   constructor(
-    private service: UserService,
+    private service: ApiService,
     private store: Store<AppState>,
      ) {
 
   }
-    public ngOnInit(): void {
+  public ngOnInit(): void {
     this.userModel$ = this.store.select(selectUserModel);
+    this.userState$ = this.store.select(selectUser);
+  }
 
-
-
-
-
-
-      }
+  public ngOnDestroy(): void {
+    this.store.dispatch(clearUserModel());
+  }
 
 
 }

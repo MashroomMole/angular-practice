@@ -11,10 +11,12 @@ import { navigateToComments } from './store/app-comments.actions';
   templateUrl: './app-comments-details.component.html'
 })
 
+/**
+ * AppCommentsDetails renders comments screen,
+ * manages comments state
+ */
 export class AppCommentsDetailsComponent implements OnInit{
-
   comments$: Observable<CommentsModel[]>;
-
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {

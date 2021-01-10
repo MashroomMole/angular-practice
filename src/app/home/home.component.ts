@@ -11,6 +11,10 @@ import { AppState } from '../store/reducers';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+/**
+ * HomeComponent renders home screen
+ */
 export class HomeComponent implements OnInit {
   public posts$: Observable<PostModel[]>;
   public loading$: Observable<boolean> = this.store.select(selectPostsLoading);

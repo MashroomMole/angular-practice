@@ -1,4 +1,4 @@
-import { address, company, geo, UserType } from './user.type';
+import { ServerResponse } from './user.server.response';
 import { UserModel } from '../../shared/model/model';
 
 /**
@@ -6,34 +6,28 @@ import { UserModel } from '../../shared/model/model';
  * mapping response from server to view model
  */
 export class UserAdapter {
-  public static adapter(serverResponse: UserType): UserModel {
+  public static adapter(model: ServerResponse): UserModel {
     return {
-      id: serverResponse.id,
-      name: serverResponse.name,
-      username: serverResponse.username,
-      email: serverResponse.email,
-      phone: serverResponse.phone,
-      website: serverResponse.website,
-      address: UserAdapter.addressAdapter.serverResponse.address,
-      company: UserAdapter.companyAdapter(serverResponse.company)
-    };
-  }
+      id: model.id,
+      name: model.name,
+      username: model.username,
+      email: model.email,
+      phone: model.phone,
+      website: model.website,
+      address: [
+        model.address.city,
+        model.address.street,
+        model.address.suite,
+        model.address.zipcode,
+        model.address.geo.lat,
+        model.address.geo.lgn,
 
-  public static geoAdapter(serverResponse: geo): any {
-    return {
-      geo: serverResponse.toString()
-    };
-    }
-
-  public static addressAdapter(serverResponse: address): any {
-    return {
-      address: JSON.stringify(serverResponse),
-      };
-    }
-
-  public static companyAdapter(serverResponse: company): any {
-    return {
-      company: JSON.stringify(serverResponse)
+      ],
+      company: [
+        model.company.name,
+        model.company.bs,
+        model.company.catchPhrase
+      ]
     };
   }
 }

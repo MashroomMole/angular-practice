@@ -2,12 +2,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PostsService } from '../../shared/services/posts.service';
 import { routerParamFlatMap } from '../../store/router/router-selectors';
 import { of } from 'rxjs';
 import { AppState } from '../../store/reducers';
 import { commentsLoad, commentsLoadFailure, commentsLoadSuccess } from '../../comments/store/app-comments.actions';
 import { postPreviewLoad, postPreviewLoadFailure, postPreviewLoadSuccess } from './post-actions';
+import { ApiService } from '../../shared/services/api-service';
 
 /**
  * postPreviewEffects - communicates with server via HTTP
@@ -50,7 +50,7 @@ export class PostEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private postsService: PostsService,
+    private postsService: ApiService,
   ) {}
 
 }

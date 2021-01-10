@@ -10,10 +10,12 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./guest-book-dialog.component.css']
 })
 
+/**
+ * GuestBookDialogComponent
+ * handles new guest book entry dialog
+ */
 export class GuestBookDialogComponent implements OnInit{
  form: FormGroup;
-
-
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,

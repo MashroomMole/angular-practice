@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './shell/about/about.component';
-import { PostsService } from './shared/services/posts.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shell/header/header.component';
 import { NavbarComponent } from './shell/navbar/navbar.component';
@@ -22,6 +21,7 @@ import { reducers } from './store/reducers';
 import { AppCommentsDetailsComponent } from './comments/app-comments-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { ApiService } from './shared/services/api-service';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
   ],
   providers: [
-    PostsService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

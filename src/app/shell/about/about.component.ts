@@ -5,8 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
+/**
+ * AboutComponent renders about page
+ */
 export class AboutComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {

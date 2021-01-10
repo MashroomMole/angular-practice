@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+/**
+ * Application placeholder component
+ */
 export class AppComponent {
   title = 'angular-practice';
 }

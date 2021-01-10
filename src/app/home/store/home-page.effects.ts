@@ -3,10 +3,10 @@ import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operato
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { PostsService } from '../../shared/services/posts.service';
 import { postsLoad, postsLoadFailure, postsLoadSuccess } from './home-page.actions';
 import { AppState } from '../../store/reducers';
 import { selectUrl } from '../../store/router/router-selectors';
+import { ApiService } from '../../shared/services/api-service';
 
 /**
  * HomePageEffects - communicates with server via HTTP
@@ -61,6 +61,6 @@ export class HomePageEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private postsService: PostsService,
+    private postsService: ApiService,
   ) {}
 }

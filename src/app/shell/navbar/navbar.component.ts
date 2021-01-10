@@ -5,6 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
+/**
+ * NavBarComponent renders navigation bar
+ */
 export class NavbarComponent {
   constructor() {}
 

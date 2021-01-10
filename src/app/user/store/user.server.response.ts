@@ -1,12 +1,16 @@
-export type UserType = {
+/**
+ * Represents the structure of server response. To be restructured to fit UserModel
+ */
+export type ServerResponse = {
   id: string,
   name: string,
   username: string,
   email: string,
-  address: string,
+  address: address,
+  geo: geo,
   phone: string,
   website: string,
-  company: string
+  company: company
 };
 
 export type address = {

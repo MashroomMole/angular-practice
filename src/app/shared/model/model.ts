@@ -33,8 +33,8 @@ export interface UserModel {
   name: string;
   username: string;
   email: string;
-  address: string;
+  address: Array<string>;
   phone: string;
   website: string;
-  company: string;
+  company: Array<string>;
 }
