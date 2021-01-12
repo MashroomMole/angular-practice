@@ -43,14 +43,15 @@ const _reducer = createReducer(
     }
   ),
   on(createEntry),
-  on(createEntrySuccess,
+  on(
+    createEntrySuccess,
     (state, action): GuestBookState => {
-    return {
-      ...state,
-      entries: [{...action.entry}, ...state.entries ],
-      error: ''
-    };
-  }
+      return {
+        ...state,
+        entries: [{...action.entry}, ...state.entries ],
+        error: ''
+      };
+    }
   ),
   on(createEntryFailure,
     (state, action): GuestBookState => {

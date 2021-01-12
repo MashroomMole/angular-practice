@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { ApiService } from '../shared/services/api-service';
 import { Observable } from 'rxjs';
 import { UserModel } from '../shared/model/model';
-import { selectUser, selectUserModel } from './store/user.selectors';
+import { selectUserModel, selectUserState } from './store/user.selectors';
 import { clearUserModel } from './store/user.actions';
 import { UserState } from './store/state';
 
@@ -30,7 +30,7 @@ export class UserComponent implements OnInit, OnDestroy {
   }
   public ngOnInit(): void {
     this.userModel$ = this.store.select(selectUserModel);
-    this.userState$ = this.store.select(selectUser);
+    this.userState$ = this.store.select(selectUserState);
   }
 
   public ngOnDestroy(): void {

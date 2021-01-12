@@ -3,21 +3,20 @@ import 'jasmine';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { provideMockRouter } from '../../shared/tests/test.utils';
-import { routerParamFlatMap } from '../../store/router/router-selectors';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { mockCommentsResponse } from '../mocks/mocks';
+import { mockUserModel, mockUserResponse } from '../mocks/mocks';
 import { AppState } from '../../store/reducers';
 import { ApiService } from '../../shared/services/api-service';
 import { first } from 'rxjs/operators';
-import { AppCommentsEffects } from './app-comments.effects';
-import { commentsLoadSuccess, navigateToComments } from './app-comments.actions';
+import { UserEffects } from './user.effects';
+import { userLoad, userLoadSuccess } from './user.actions';
+import { UserAdapter } from './user.adapter';
 
-describe('Home page effects', () => {
+describe('User popup effects', () => {
   let service: ApiService;
   let store: MockStore<AppState>;
   let actions$: ReplaySubject<any>;
-  let effects$: AppCommentsEffects;
+  let effects$: UserEffects;
 
 
   beforeEach(
@@ -26,34 +25,35 @@ describe('Home page effects', () => {
         imports: [HttpClientTestingModule],
         providers: [
           provideMockActions(() => actions$),
-          AppCommentsEffects,
+          UserEffects,
           ApiService,
-          provideMockRouter(),
           // mock the Store and the selectors that are used within the Effect
           provideMockStore({
             selectors: [
               {
-                selector: routerParamFlatMap,
-                value: '10',
+                selector: '',
+                value: '',
               },
             ],
-          })        ],
+          }),
+        ],
       });
       store = TestBed.inject(MockStore);
-      effects$ = TestBed.inject(AppCommentsEffects);
+      effects$ = TestBed.inject(UserEffects);
       actions$ = new ReplaySubject(1);
       service = TestBed.inject(ApiService);
     });
 
   it(
-    'should navigate to comments',
+    'should load user details',
     (done) =>  {
-      spyOn(service, 'getComments').and.returnValue(of(mockCommentsResponse));
-      effects$.navigateToComments$.pipe(first()).subscribe((action) => {
+      const adaptedResponse = UserAdapter.adapter(mockUserResponse);
+      spyOn(service, 'getUserDetails').and.returnValue(of(adaptedResponse));
+      effects$.userDetailsLoad$.pipe(first()).subscribe((action) => {
         expect(action).toEqual(
-          commentsLoadSuccess({comments: mockCommentsResponse}));
+          userLoadSuccess({model: mockUserModel()}));
       });
-      actions$.next(navigateToComments());
+      actions$.next(userLoad({id: '5'}));
       done();
     });
 });

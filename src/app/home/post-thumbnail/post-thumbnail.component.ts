@@ -6,8 +6,6 @@ import { Router } from '@angular/router';
   selector: 'app-post-thumbnail',
   templateUrl: './post-thumbnail.component.html',
 })
-
-
 /**
  * PostThumbnailComponent renders details
  *  for each post on home page
@@ -18,7 +16,7 @@ export class PostThumbnailComponent {
 constructor(private router: Router) {}
 
   public navigateToPost(postId: string): Promise<boolean> {
-    return this.router.navigate(['../posts/' + postId]);
+    return this.router.navigateByUrl('posts/' + postId);
   }
 }
 

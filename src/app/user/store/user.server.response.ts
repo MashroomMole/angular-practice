@@ -7,7 +7,6 @@ export type ServerResponse = {
   username: string,
   email: string,
   address: address,
-  geo: geo,
   phone: string,
   website: string,
   company: company
@@ -18,15 +17,12 @@ export type address = {
     suite: string,
     city: string,
     zipcode: string,
-    geo: {
-      lat: string,
-      lgn: string,
-    }
+    geo: geo
 };
 
 export type geo = {
   lat: string,
-  lgn: string,
+  lng: string,
 };
 
 export type company = {

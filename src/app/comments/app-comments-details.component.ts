@@ -19,7 +19,7 @@ export class AppCommentsDetailsComponent implements OnInit{
   comments$: Observable<CommentsModel[]>;
   constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.store.dispatch(navigateToComments());
     this.comments$ = this.store.select(selectComments);
   }

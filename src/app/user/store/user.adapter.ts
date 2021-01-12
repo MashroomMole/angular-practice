@@ -19,9 +19,10 @@ export class UserAdapter {
         model.address.street,
         model.address.suite,
         model.address.zipcode,
+      ],
+      geo: [
         model.address.geo.lat,
-        model.address.geo.lgn,
-
+        model.address.geo.lng
       ],
       company: [
         model.company.name,

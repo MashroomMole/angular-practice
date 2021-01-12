@@ -12,6 +12,7 @@ export const routerParamFlatMap = createSelector(
 export const selectUrl = createSelector(
   selectRouterState,
   (store) => (store ? store.state.url : {}));
+
 export const selectPostID = createSelector(
   routerParamFlatMap,
   (params) => (params ? params['id'] : {})

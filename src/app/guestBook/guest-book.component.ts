@@ -9,7 +9,7 @@ import { GuestBookDialogComponent } from './guest-book-dialog/guest-book-dialog.
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import { UserComponent } from '../user/user.component';
-import { selectUser } from '../user/store/user.selectors';
+import { selectUserState } from '../user/store/user.selectors';
 import { userLoad } from '../user/store/user.actions';
 import { UserState } from '../user/store/state';
 
@@ -65,7 +65,7 @@ export class GuestBookComponent implements OnInit {
 
   public openUserInfo(userId: string): void {
     this.store.dispatch(userLoad({id: userId}));
-    this.user$ = this.store.select(selectUser);
+    this.user$ = this.store.select(selectUserState);
 
     this.userDialogRef = this.dialog.open(UserComponent, {
         hasBackdrop: true,
@@ -75,8 +75,6 @@ export class GuestBookComponent implements OnInit {
         maxHeight: '100vh',
         maxWidth: '100vw',
       });
-    console.log(this.data);
-
     this.userDialogRef.afterClosed();
   }
 

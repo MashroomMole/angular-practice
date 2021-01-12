@@ -27,6 +27,11 @@
       </mat-form-field>
 
       <mat-form-field class="full-width">
+        <mat-label>Geo</mat-label>
+        <input matInput disabled [ngModel]="userModel.geo" ng-list/>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
         <mat-label>Phone</mat-label>
         <input matInput disabled [ngModel]="userModel.phone"/>
       </mat-form-field>

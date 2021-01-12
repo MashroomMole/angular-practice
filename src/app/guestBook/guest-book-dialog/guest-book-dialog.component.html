@@ -1,5 +1,5 @@
 <div class="dialog-form">
-  <form novalidate
+  <form
       [formGroup]="form"
     >
       <h1 mat-dialog-title>Your feedback:</h1>
@@ -7,13 +7,19 @@
         <mat-form-field class="full-width">
           <mat-label>Email</mat-label>
           <input type="name" matInput formControlName="userId"
-                 placeholder="olga.zoldaka@cv.lv">
+                 placeholder="olga.zoldaka@cv.lv"/>
+          <mat-error>
+            Please enter a valid email address
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>Message</mat-label>
           <textarea type="name" matInput formControlName="body"
-                 placeholder="Type your message here">
+                    cdkTextareaAutosize placeholder="Type your message here">
           </textarea>
+          <mat-error>
+            This field is required
+          </mat-error>
         </mat-form-field>
       </mat-dialog-content>
       <mat-dialog-actions>

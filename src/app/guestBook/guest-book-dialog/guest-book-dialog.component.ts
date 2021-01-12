@@ -15,26 +15,26 @@ import { MatDialogRef } from '@angular/material/dialog';
  * handles new guest book entry dialog
  */
 export class GuestBookDialogComponent implements OnInit{
- form: FormGroup;
-  constructor(
+  form: FormGroup;
+
+    constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
     private dialogRef: MatDialogRef<GuestBookDialogComponent>
-) {
-    this.form = this.fb.group({
-    userId: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-    id: '',
-    title: '',
-    body: ['', Validators.required],
-  });
-  }
+) {}
 
-  onSubmit(): void  {
+  public onSubmit(): void  {
     if (this.form.valid) {
       this.dialogRef.close(this.form.getRawValue());
     }
 }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.form = this.fb.group({
+      userId: ['', [Validators.required, Validators.maxLength(20), Validators.email]],
+      id: '',
+      title: '',
+      body: ['', Validators.required],
+    });
   }
 }

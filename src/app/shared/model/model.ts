@@ -34,6 +34,7 @@ export interface UserModel {
   username: string;
   email: string;
   address: Array<string>;
+  geo: Array<string>;
   phone: string;
   website: string;
   company: Array<string>;

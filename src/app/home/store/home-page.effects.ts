@@ -49,12 +49,15 @@ export class HomePageEffects {
         return url === '/posts';
         }
         ),
-        switchMap(() => this.postsService.getAllPosts()
-          .pipe(
-            map(posts => postsLoadSuccess({ posts })),
-            catchError(error => of(postsLoadFailure({ error })))
-          )
-        )
+        switchMap(() => {
+          return this.postsService.getAllPosts()
+            .pipe(
+              map(posts => {
+                return postsLoadSuccess({posts});
+              }),
+              catchError(error => of(postsLoadFailure({error})))
+            );
+        })
       );
   });
 
