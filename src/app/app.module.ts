@@ -22,6 +22,7 @@ import { AppCommentsDetailsComponent } from './comments/app-comments-details.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ApiService } from './shared/services/api-service';
+import { GuestBookDialogService } from './guestBook/guest-book-dialog-service/dialog-service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ApiService } from './shared/services/api-service';
     SharedModule,
   ],
   providers: [
-    ApiService
+    ApiService,
+    GuestBookDialogService
   ],
   bootstrap: [AppComponent]
 })

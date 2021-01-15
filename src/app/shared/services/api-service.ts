@@ -9,13 +9,16 @@ import { UserAdapter } from '../../user/store/user.adapter';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * ApiService provides service for http communication with server
+ */
 
 export class ApiService {
-
+  private apiUrl = 'https://jsonplaceholder.typicode.com/';
   constructor(private http: HttpClient) {}
 
-  getFistFivePosts(): Observable<PostModel[]> {
-    return this.http.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts')
+  public getFistFivePosts(): Observable<PostModel[]> {
+    return this.http.get<PostModel[]>(this.apiUrl + 'posts/')
       .pipe(
         map((data: PostModel[] ) => {
           return data.slice(0, 5);
@@ -23,14 +26,14 @@ export class ApiService {
         catchError(this.handleError));
   }
 
-  getPost(postId: string): Observable<PostModel> {
-    return this.http.get<PostModel>('https://jsonplaceholder.typicode.com/posts/' + postId)
+  public getPost(postId: string): Observable<PostModel> {
+    return this.http.get<PostModel>(this.apiUrl + 'posts/' + postId)
       .pipe(catchError(this.handleError));
   }
 
 
-  getAllPosts(): Observable<PostModel[]> {
-    return this.http.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts')
+  public getAllPosts(): Observable<PostModel[]> {
+    return this.http.get<PostModel[]>(this.apiUrl + 'posts/')
       .pipe(
         map((data: PostModel[] ) => {
           return data;
@@ -38,16 +41,14 @@ export class ApiService {
         catchError(this.handleError));
   }
 
-  getComments(postId: string): Observable<CommentsModel[]> {
-    return this.http.get<CommentsModel[]>('https://jsonplaceholder.typicode.com/posts/' + postId + '/comments')
+  public getComments(postId: string): Observable<CommentsModel[]> {
+    return this.http.get<CommentsModel[]>(this.apiUrl + 'posts/' + postId + '/comments')
       .pipe(catchError(this.handleError));
   }
 
-
-
   // Reusing the same API for GuestBook component
-  getGuestBookEntries(): Observable<EntryModel[]> {
-    return this.http.get<EntryModel[]>('https://jsonplaceholder.typicode.com/posts')
+  public getGuestBookEntries(): Observable<EntryModel[]> {
+    return this.http.get<EntryModel[]>(this.apiUrl + 'posts/')
       .pipe(
         map((data: EntryModel[] ) => {
           return data.reverse();
@@ -58,13 +59,13 @@ export class ApiService {
   public AddEntry(entry: EntryModel): Observable<EntryModel> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=UTF-8' });
     const newEntry = { ...entry  , id: null };
-    return this.http.post<EntryModel>('https://jsonplaceholder.typicode.com/posts', newEntry, {headers})
+    return this.http.post<EntryModel>(this.apiUrl + 'posts/', newEntry, {headers})
       .pipe(
         catchError(this.handleError));
   }
 
-  getUserDetails(userId: string): Observable<UserModel> {
-    return this.http.get<ServerResponse>('https://jsonplaceholder.typicode.com/users/' + userId)
+  public getUserDetails(userId: string): Observable<UserModel> {
+    return this.http.get<ServerResponse>(this.apiUrl + 'users/' + userId)
       .pipe(
         map((data: ServerResponse ) => {
           return UserAdapter.adapter(data);

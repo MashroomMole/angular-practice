@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PostDetailsComponent } from './post-details.component';
 import { POST_FEATURE_KEY } from './store/state';
-import { postReducer } from './store/post-reducer';
+import { postReducer } from './store/post.reducer';
 import { RouterModule } from '@angular/router';
 import { PostEffects } from './store/post.effects';
 import { AppCommentsComponent } from './comments-preview/app-comments.component';

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentsModel, PostModel } from '../shared/model/model';
 import { Observable } from 'rxjs';
-import { selectPostState } from './store/post-selectors';
+import { selectPostState } from './store/post.selectors';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/reducers';
-import { postPreviewLoad } from './store/post-actions';
 import { selectPostID } from '../store/router/router-selectors';
 import { selectComments } from '../comments/store/app-comments.selectors';
 import { commentsLoad } from '../comments/store/app-comments.actions';
+import { postDetailsLoad } from './store/post.actions';
 
 @Component({
   selector: 'app-post-details',
@@ -23,7 +23,7 @@ export class PostDetailsComponent implements OnInit{
   }
 
   public ngOnInit(): void {
-    this.store.dispatch(postPreviewLoad());
+    this.store.dispatch(postDetailsLoad());
     this.store.dispatch(commentsLoad());
 
   }

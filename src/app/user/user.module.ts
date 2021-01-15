@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserEffects } from './store/user.effects';
 import { MatCardModule } from '@angular/material/card';
 import { userReducer } from './store/user.reducer';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [UserComponent],
@@ -25,7 +26,8 @@ import { userReducer } from './store/user.reducer';
     MatInputModule,
     ReactiveFormsModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}

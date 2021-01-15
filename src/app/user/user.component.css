@@ -1,4 +1,29 @@
-.user-info-dialog {
+.user-info-dialog .mat-dialog-container {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-row .mat-form-field {
+  padding-right: 8px;
+}
+
+.mat-form-field {
+  width: 33.3%;
+}
+
+
+.mat-input-element {
+  padding: 0 0;
+  margin: 5px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

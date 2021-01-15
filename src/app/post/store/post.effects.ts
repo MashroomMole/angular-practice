@@ -6,7 +6,7 @@ import { routerParamFlatMap } from '../../store/router/router-selectors';
 import { of } from 'rxjs';
 import { AppState } from '../../store/reducers';
 import { commentsLoad, commentsLoadFailure, commentsLoadSuccess } from '../../comments/store/app-comments.actions';
-import { postPreviewLoad, postPreviewLoadFailure, postPreviewLoadSuccess } from './post-actions';
+import { postDetailsLoad, postDetailsLoadFailure, postDetailsLoadSuccess } from './post.actions';
 import { ApiService } from '../../shared/services/api-service';
 
 /**
@@ -20,14 +20,17 @@ export class PostEffects {
   public postPreviewLoad$ = createEffect(() => {
     return this.actions$
       .pipe(
-    ofType(postPreviewLoad),
+    ofType(postDetailsLoad),
     withLatestFrom(this.store.select(routerParamFlatMap)),
-        switchMap(([, router]) => this.postsService.getPost(router['id'])
-          .pipe(
-            map(post => postPreviewLoadSuccess({ post })),
-            catchError(error => of(postPreviewLoadFailure({ error })))
-          )
-        )
+        switchMap(([, router]) => {
+          return this.postsService.getPost(router['id'])
+            .pipe(
+              map(post => {
+                return postDetailsLoadSuccess({post});
+              }),
+              catchError(error => of(postDetailsLoadFailure({error})))
+            );
+        })
       );
   });
   /**
@@ -38,12 +41,13 @@ export class PostEffects {
       .pipe(
         ofType(commentsLoad),
         withLatestFrom(this.store.select(routerParamFlatMap)),
-        switchMap(([ , routerParams]) => this.postsService.getComments(routerParams['id'])
-          .pipe(
-            map(comments => commentsLoadSuccess({ comments })),
-            catchError(error => of(commentsLoadFailure({ error })))
-          )
-        )
+        switchMap(([ , routerParams]) => {
+          return this.postsService.getComments(routerParams['id'])
+            .pipe(
+              map(comments => commentsLoadSuccess({comments})),
+              catchError(error => of(commentsLoadFailure({error})))
+            );
+        })
       );
   });
 

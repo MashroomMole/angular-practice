@@ -2,6 +2,7 @@ import * as actions from './guest-book.actions';
 import { GuestBookState } from './state';
 import { mockEntriesResponse } from '../mocks/mocks';
 import { guestBookReducers } from './guest-book.reducers';
+import { mockPost } from '../../home/mocks/mocks';
 
 const getInitialGuestBookState = (): GuestBookState => ({
   loading: false,
@@ -38,6 +39,17 @@ describe('GuestBook - store - reducer', () => {
           error: 'Some error'
         })
       ).error
+    ).toBeTruthy();
+  });
+
+  it('action createEntrySuccess - should add new entry', () => {
+    expect(
+      guestBookReducers(
+        getInitialGuestBookState(),
+        actions.createEntrySuccess({
+          entry: mockPost
+        })
+      )
     ).toBeTruthy();
   });
 

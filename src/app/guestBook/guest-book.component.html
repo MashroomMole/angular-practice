@@ -1,9 +1,9 @@
-<h2 style="text-align: left; margin-bottom: 15px; color: lightslategray;">Guest Book</h2>
+<h2>Guest Book</h2>
 <app-loading *ngIf="loading$ | async"></app-loading>
 <!-- Add new entry button -->
 <ng-container *ngIf="!(loading$ | async)">
   <div style="float: right">
-    <button class="btn btn-secondary pointer" [disabled]="disableButton" (click)="openDialog()">
+    <button class="btn btn-secondary pointer" [autofocus]="" [disabled]="disableButton" (click)="openEntryDialog()">
       {{disableButton ? "..." : "Add feedback"}}
     </button>
   </div>
@@ -20,10 +20,7 @@
             <a [textContent]="entry.userId"></a>
             <button mat-button (click)="openUserInfo(entry.userId)">Click for details...</button>
           </p>
-
       </div>
-      <mat-paginator [length]="entries?.length" [pageSize]="3"
-                     [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
     </div>
   </div>
 </ng-container>

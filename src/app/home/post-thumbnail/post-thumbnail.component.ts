@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PostModel } from '../../shared/model/model';
 import { Router } from '@angular/router';
 
@@ -10,10 +10,13 @@ import { Router } from '@angular/router';
  * PostThumbnailComponent renders details
  *  for each post on home page
  */
-export class PostThumbnailComponent {
+export class PostThumbnailComponent implements OnInit {
   @Input() public post: PostModel;
 
 constructor(private router: Router) {}
+
+public ngOnInit(): void {
+}
 
   public navigateToPost(postId: string): Promise<boolean> {
     return this.router.navigateByUrl('posts/' + postId);
