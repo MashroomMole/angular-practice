@@ -11,12 +11,12 @@ import { GuestBookEffects } from './store/guest-book.effects';
 import { GuestBookDialogComponent } from './guest-book-dialog/guest-book-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { SharedModule } from '../shared/shared.module';
 import { UserModule } from '../user/user.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ApiService } from '../shared/services/api-service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 const routes: Routes = [
@@ -36,12 +36,12 @@ const routes: Routes = [
     RouterModule,
     FormsModule,
     MatPaginatorModule,
-    SharedModule,
     UserModule,
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [ApiService]
 

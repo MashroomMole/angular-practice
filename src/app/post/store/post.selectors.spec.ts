@@ -11,4 +11,9 @@ describe('Post - store - selectors', () => {
     const expected = selectors.selectPostState(appState);
     expect(expected).toEqual(postState);
   });
+
+  it('selectPostLoading', () => {
+    const expected = selectors.selectPostLoading(appState);
+    expect(expected).toEqual(postState.loading);
+  });
 });

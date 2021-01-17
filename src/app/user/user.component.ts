@@ -3,7 +3,7 @@ import { AppState } from '../store/reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserModel } from '../shared/model/model';
-import { selectUserModel, selectUserState } from './store/user.selectors';
+import { selectUserLoading, selectUserModel, selectUserState } from './store/user.selectors';
 import { clearUserModel } from './store/user.actions';
 import { UserState } from './store/state';
 
@@ -18,18 +18,15 @@ import { UserState } from './store/state';
  * clears user state on destroy
  */
 export class UserComponent implements OnInit, OnDestroy {
-  userModel$: Observable<UserModel>;
-  userState$: Observable<UserState>;
-
+  public readonly userModel$: Observable<UserModel> = this.store.select(selectUserModel);
+  public readonly userState$: Observable<UserState> = this.store.select(selectUserState);
+  public readonly loading$: Observable<boolean> = this.store.select(selectUserLoading);
 
   constructor(
-    private store: Store<AppState>,
-     ) {
+    private store: Store<AppState>
+     ) {}
 
-  }
   public ngOnInit(): void {
-    this.userModel$ = this.store.select(selectUserModel);
-    this.userState$ = this.store.select(selectUserState);
   }
 
   public ngOnDestroy(): void {

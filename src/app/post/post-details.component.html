@@ -1,19 +1,25 @@
-<div class="post-preview"
-     *ngIf="post$ | async as post">
-  <a>
-    <h2 class="post-title" [textContent]="post?.title">
-    </h2>
-    <h3 class="post-subtitle">{{ post.body }}
-    </h3>
-  </a>
-  <p class="post-meta">Posted by
-    <a [textContent]="post.userId"></a>
-  </p>
-  <app-comments
-    [comments]="comments$ | async"
-    [postId]="postId$ | async">
-  </app-comments>
-</div>
+<ng-container *ngIf="(loading$ | async)">
+  <div class="uploader-status">
+    <mat-spinner style="margin:0 auto;"></mat-spinner>
+  </div>
+</ng-container>
+<ng-container *ngIf="!(loading$ | async)">
+  <div class="post-preview" *ngIf="post$ | async as post">
+    <a>
+      <h2 class="post-title" [textContent]="post?.title">
+      </h2>
+      <h3 class="post-subtitle">{{ post.body }}
+      </h3>
+    </a>
+    <p class="post-meta">Posted by
+      <a [textContent]="post.userId"></a>
+    </p>
+    <app-comments
+      [comments]="comments$ | async"
+      [postId]="postId$ | async">
+    </app-comments>
+  </div>
+</ng-container>
 
 <!-- Home Button -->
 <div>

@@ -6,7 +6,13 @@ import { postDetailsLoad, postDetailsLoadFailure, postDetailsLoadSuccess } from 
 // tslint:disable-next-line:variable-name
 const _reducer = createReducer(
   postInitialState,
-  on(postDetailsLoad),
+  on(postDetailsLoad,
+    (state): PostState => {
+      return {
+        ...state,
+        loading: true
+      };
+    }),
   on(
     postDetailsLoadSuccess,
     (state, action): PostState => {
@@ -16,7 +22,8 @@ const _reducer = createReducer(
         title: action.post.title,
         body: action.post.body,
         userId: action.post.userId,
-        error: ''
+        error: '',
+        loading: false
       };
     }
   ),

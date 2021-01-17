@@ -40,6 +40,7 @@ export const mockUserModel = (): UserModel => ({
 export const mockUserState = (): AppState => ({
   [USER_FEATURE_KEY]: {
     model: mockUserModel(),
+    loading: false,
     error: ''
   }
 });

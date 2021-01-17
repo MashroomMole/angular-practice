@@ -16,13 +16,12 @@ import { AppState } from '../store/reducers';
  * HomeComponent renders home screen
  */
 export class HomeComponent implements OnInit {
-  public posts$: Observable<PostModel[]>;
-  public loading$: Observable<boolean> = this.store.select(selectPostsLoading);
+  public readonly posts$: Observable<PostModel[]> = this.store.select(selectPosts);
+  public readonly loading$: Observable<boolean> = this.store.select(selectPostsLoading);
 
   constructor(private store: Store<AppState>) {}
 
   public ngOnInit(): void {
     this.store.dispatch(postsLoad());
-    this.posts$ = this.store.select(selectPosts);
   }
 }

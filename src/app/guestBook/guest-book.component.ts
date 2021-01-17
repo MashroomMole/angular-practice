@@ -22,7 +22,7 @@ import { GuestBookDialogService } from './guest-book-dialog-service/dialog-servi
  * manages GuestBookDialog and UserComponent state
  */
 export class GuestBookComponent implements OnInit {
-  public entries$: Observable<EntryModel[]>;
+  public entries$: Observable<EntryModel[]> = this.store.select(selectEntries);
   public loading$: Observable<boolean> = this.store.select(selectEntriesLoading);
   public disableButton: boolean;
   public user$: Observable<UserState>;
@@ -32,7 +32,6 @@ export class GuestBookComponent implements OnInit {
   public ngOnInit(): void {
 
     this.disableButton = false;
-    this.entries$ = this.store.select(selectEntries);
     this.store.dispatch(entriesLoad());
   }
 

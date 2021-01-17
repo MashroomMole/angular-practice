@@ -6,13 +6,20 @@ import { clearUserModel, userLoad, userLoadFailure, userLoadSuccess } from './us
 // tslint:disable-next-line:variable-name
 const _reducer = createReducer(
   userInitialState,
-  on(userLoad),
+  on(userLoad,
+    (state): UserState => {
+      return {
+        ...state,
+        loading: true
+      };
+    }),
   on(
     userLoadSuccess,
     (state, action): UserState => {
       return {
         ...state,
-       model: action.model
+        model: action.model,
+        loading: false
       };
     }
   ),
@@ -20,6 +27,7 @@ const _reducer = createReducer(
     return {
       ...state,
       model: null,
+      loading: false,
       error: action.error,
     };
   }),

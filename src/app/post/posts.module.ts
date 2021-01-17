@@ -11,6 +11,7 @@ import { PostEffects } from './store/post.effects';
 import { AppCommentsComponent } from './comments-preview/app-comments.component';
 import { AppCommentsModule } from '../comments/app-comments.module';
 import { UserModule } from '../user/user.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [PostDetailsComponent, AppCommentsComponent],
@@ -23,7 +24,8 @@ import { UserModule } from '../user/user.module';
     ReactiveFormsModule,
     RouterModule,
     UserModule,
-    AppCommentsModule
+    AppCommentsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class PostsModule {}

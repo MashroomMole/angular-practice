@@ -3,3 +3,7 @@ h2 {
   margin-bottom: 15px;
   color: lightslategray;
 }
+
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: lightslategray;
+}

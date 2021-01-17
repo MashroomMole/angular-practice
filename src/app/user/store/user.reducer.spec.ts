@@ -5,10 +5,22 @@ import { userReducer } from './user.reducer';
 
 const getInitialUserState = (): UserState => ({
   model: null,
+  loading: false,
   error: '',
 });
 
 describe('User - store - reducer', () => {
+  it('action userLoad - should set loading', () => {
+    expect(
+      userReducer(
+        getInitialUserState(),
+        actions.userLoad({
+          id: mockUserModel().id,
+        })
+      ).loading
+    ).toBeTruthy();
+  });
+
   it('action userLoadSuccess - should add some data', () => {
     expect(
       userReducer(

@@ -16,4 +16,9 @@ describe('User - store - selectors', () => {
     const expected = selectors.selectUserModel(appState);
     expect(expected).toEqual(userState.model);
   });
+
+  it('selectUserLoading', () => {
+    const expected = selectors.selectUserLoading(appState);
+    expect(expected).toEqual(userState.loading);
+  });
 });

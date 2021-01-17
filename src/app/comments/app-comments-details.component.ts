@@ -16,12 +16,12 @@ import { navigateToComments } from './store/app-comments.actions';
  * manages comments state
  */
 export class AppCommentsDetailsComponent implements OnInit{
-  comments$: Observable<CommentsModel[]>;
+  public readonly comments$: Observable<CommentsModel[]> = this.store.select(selectComments);
+
   constructor(private store: Store<AppState>) {}
 
   public ngOnInit(): void {
     this.store.dispatch(navigateToComments());
-    this.comments$ = this.store.select(selectComments);
   }
 }
 

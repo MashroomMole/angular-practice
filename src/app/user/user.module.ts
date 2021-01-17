@@ -12,6 +12,7 @@ import { UserEffects } from './store/user.effects';
 import { MatCardModule } from '@angular/material/card';
 import { userReducer } from './store/user.reducer';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [UserComponent],
@@ -27,7 +28,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ReactiveFormsModule,
     MatCardModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}

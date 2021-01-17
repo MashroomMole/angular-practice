@@ -9,6 +9,7 @@ export const mockPostState = (): AppState => ({
     body: 'post body',
     userId: '23',
     comments: mockCommentsResponse,
-    error: ''
+    error: '',
+    loading: false
   }
 });

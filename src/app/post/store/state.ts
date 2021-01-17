@@ -10,6 +10,7 @@ export interface PostState {
   body: string;
   comments: Array<CommentsModel>;
   error: string;
+  loading: boolean;
 }
 
 export const postInitialState: PostState = {
@@ -18,5 +19,6 @@ export const postInitialState: PostState = {
   title: null,
   body: null,
   comments: [],
-  error: ''
+  error: '',
+  loading: false
 };

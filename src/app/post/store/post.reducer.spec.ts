@@ -10,6 +10,7 @@ const getInitialPostState = (): PostState => ({
   title: '',
   comments: [],
   error: '',
+  loading: false
 });
 
 describe('Post - store - reducer', () => {
@@ -33,6 +34,15 @@ describe('Post - store - reducer', () => {
           error: 'Some error'
         })
       ).error
+    ).toBeTruthy();
+  });
+
+  it('action postPreviewLoad - should set loading', () => {
+    expect(
+      postReducer(
+        getInitialPostState(),
+        actions.postDetailsLoad()
+      ).loading
     ).toBeTruthy();
   });
 });

@@ -8,7 +8,6 @@ export enum GuestBookActions {
   createEntry = '[GuestBook] add entry',
   createEntrySuccess = '[GuestBook] add entry success',
   createEntryFailure = '[GuestBook] add entry failure',
-
 }
 
 export const entriesLoad = createAction(GuestBookActions.entriesLoad);

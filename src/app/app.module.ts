@@ -6,9 +6,6 @@ import { AboutComponent } from './shell/about/about.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './shell/header/header.component';
 import { NavbarComponent } from './shell/navbar/navbar.component';
-import { RouterModule } from '@angular/router';
-import { PostDetailsComponent } from './post/post-details.component';
-import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
@@ -18,9 +15,7 @@ import { CommonModule } from '@angular/common';
 import { RouterParamSerializer } from './store/router/router';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './store/reducers';
-import { AppCommentsDetailsComponent } from './comments/app-comments-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/shared.module';
 import { ApiService } from './shared/services/api-service';
 import { GuestBookDialogService } from './guestBook/guest-book-dialog-service/dialog-service';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +41,6 @@ import { AppRoutingModule } from './app-routing.module';
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     HomeComponentModule,
-    SharedModule,
   ],
   providers: [
     ApiService,

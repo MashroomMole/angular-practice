@@ -1,6 +1,9 @@
 <h2>Guest Book</h2>
-<app-loading *ngIf="loading$ | async"></app-loading>
-<!-- Add new entry button -->
+<ng-container *ngIf="(loading$ | async)">
+  <div class="uploader-status">
+    <mat-spinner style="margin:0 auto;"></mat-spinner>
+  </div>
+</ng-container><!-- Add new entry button -->
 <ng-container *ngIf="!(loading$ | async)">
   <div style="float: right">
     <button class="btn btn-secondary pointer" [autofocus]="" [disabled]="disableButton" (click)="openEntryDialog()">

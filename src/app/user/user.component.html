@@ -1,3 +1,8 @@
+<ng-container *ngIf="(loading$ | async)">
+  <div class="uploader-status">
+    <mat-spinner style="margin:0 auto;"></mat-spinner>
+  </div>
+</ng-container>
 <ng-container
   *ngIf="(userState$ | async).model as userModel">
 <div class="user-info-dialog">
@@ -54,3 +59,4 @@
      </div>
   </div>
 </ng-container>
+<ng-container *ngIf="(userModel$ | async) === null && !loading$">There is no data available</ng-container>

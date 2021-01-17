@@ -22,6 +22,7 @@ describe('User component', () => {
               value: {
                 model: mockUserModel(),
                 error: '',
+                loading: false
               },
             },
           ],

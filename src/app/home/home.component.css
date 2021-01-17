@@ -3,3 +3,7 @@ h1 {
   text-align: center;
   margin-bottom: 12px;
 }
+
+.uploader-status ::ng-deep .mat-spinner circle {
+  stroke: lightslategray;
+}
