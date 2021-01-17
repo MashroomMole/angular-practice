@@ -10,7 +10,7 @@ import { ApiService } from '../../shared/services/api-service';
 import { first } from 'rxjs/operators';
 import { PostEffects } from './post.effects';
 import { mockPost } from '../../home/mocks/mocks';
-import { postDetailsLoad, postDetailsLoadSuccess } from './post.actions';
+import { postDetailsLoad, postDetailsLoadFailure, postDetailsLoadSuccess } from './post.actions';
 import { mockCommentsResponse } from '../../comments/mocks/mocks';
 import { commentsLoad, commentsLoadSuccess } from '../../comments/store/app-comments.actions';
 
@@ -71,23 +71,5 @@ describe('Post preview effects', () => {
         done();
       });
       actions$.next(commentsLoad());
-    });
-
-  it('should catch error',
-    () => {
-      // const spy = jasmine.createSpyObj('getPost', ['GET']);
-      // store.overrideSelector(routerParamFlatMap, {postId: '02'});
-      // store.refreshState();
-
-      spyOn(service, 'getPost').and.throwError('error');
-      effects$.commentsLoad$.pipe(first()).subscribe((spy) => {
-        service.getAllPosts.call('ddd');
-        expect(spy).toHaveBeenCalledWith('error');
-      });
-      actions$.next(postDetailsLoad());
-
-
-
-
     });
 });

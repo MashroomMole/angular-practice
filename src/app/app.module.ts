@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ApiService } from './shared/services/api-service';
 import { GuestBookDialogService } from './guestBook/guest-book-dialog-service/dialog-service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -36,15 +37,7 @@ import { GuestBookDialogService } from './guestBook/guest-book-dialog-service/di
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path: 'posts', component: HomeComponent},
-      {path: 'posts/:id', component: PostDetailsComponent},
-      {path: 'posts/:id/comments', component: AppCommentsDetailsComponent},
-      {path: 'about', component: AboutComponent},
-      {path: 'home', component: HomeComponent},
-      {path: 'guestBook', loadChildren: () => import('./guestBook/guest-book.module').then(m => m.GuestBookModule)},
-      {path: '', redirectTo: '/home', pathMatch: 'full'},
-    ]),
+    AppRoutingModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot({

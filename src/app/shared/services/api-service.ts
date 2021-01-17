@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommentsModel, EntryModel, PostModel, UserModel } from '../model/model';
@@ -34,11 +34,7 @@ export class ApiService {
 
   public getAllPosts(): Observable<PostModel[]> {
     return this.http.get<PostModel[]>(this.apiUrl + 'posts/')
-      .pipe(
-        map((data: PostModel[] ) => {
-          return data;
-        }),
-        catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   public getComments(postId: string): Observable<CommentsModel[]> {
@@ -73,7 +69,7 @@ export class ApiService {
         catchError(this.handleError));
   }
 
-  private handleError(err: any): Observable<any> {
+  public handleError(err: any): Observable<any> {
     // supports logging to the console only
     let errorMessage: string;
     if (err.error instanceof ErrorEvent) {

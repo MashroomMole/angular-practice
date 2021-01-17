@@ -1,43 +1,68 @@
 import { TestBed } from '@angular/core/testing';
-import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GuestBookDialogComponent } from './guest-book-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { of } from 'rxjs';
 
 describe('Guest book dialog component', () => {
-  let dialogRef: MatDialogRef<GuestBookDialogComponent>;
   let component: GuestBookDialogComponent;
-  let formBuilder: FormBuilder;
+  let data;
+
+  const getMockDialogRef = () =>
+    ({
+      close: jasmine.createSpy('close').and.returnValue(of({data}))
+    });
+
+
+  const getMockDialog = () =>
+    ({
+      open: jasmine.createSpy().and.returnValue(getMockDialogRef()),
+    });
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        FormsModule, ReactiveFormsModule,
+      ],
       providers: [
         GuestBookDialogComponent,
-        FormBuilder,
-        {provide: MatDialogRef, useValue: {dialogRef}},
-      ],
+        {
+          provide: MatDialog,
+          useValue: getMockDialog()
+        },
+        {
+          provide: MatDialogRef,
+          useValue: getMockDialogRef()
+        }
+      ]
     });
-    formBuilder = TestBed.inject(FormBuilder);
-    dialogRef = TestBed.inject(MatDialogRef);
     component = TestBed.inject(GuestBookDialogComponent);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('should build form on init', () => {
-    const spy = spyOn(formBuilder, 'group');
-
     component.ngOnInit();
-    expect(spy).toHaveBeenCalled();
-  });
-  it('should emit raw value on submit', () => {
-    const form = new FormGroup({
-      id: new FormControl('1'),
-      value: new FormControl('value 1')
-    });
-    const spy = spyOn(dialogRef, 'close').and.returnValue(form.getRawValue());
+    expect(component.form.valid).toBeFalsy();
+
+    const name = component.form.controls['userId'];
+    const message = component.form.controls['body'];
+    component.form.controls['userId'].setValue('test@test.com');
+    component.form.controls['body'].setValue('body');
+    expect(component.form.valid).toBeTruthy();
+    data = {
+      id: '',
+      body: 'body',
+      title: '',
+      userId: 'test@test.com'
+    };
     component.onSubmit();
-    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should not submit invalid data', () => {
+    component.ngOnInit();
+    expect(component.form.valid).toBeFalsy();
+
+    data = {};
+    component.onSubmit();
+    expect(getMockDialogRef().close).not.toHaveBeenCalled();
   });
 });

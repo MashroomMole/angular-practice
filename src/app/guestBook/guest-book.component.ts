@@ -64,6 +64,7 @@ export class GuestBookComponent implements OnInit {
       '850px',
       '400px',
       true,
-      true);
+      true
+    );
   }
 }

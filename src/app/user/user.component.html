@@ -1,55 +1,56 @@
+<ng-container
+  *ngIf="(userState$ | async).model as userModel">
 <div class="user-info-dialog">
-<h1 mat-dialog-title>User Information</h1>
-  <div *ngIf="userModel$ | async as userModel">
+  <h1 mat-dialog-title>User Information</h1>
     <div class="form-row">
-      <mat-form-field matTooltip = "{{userModel.id}}" matTooltipPosition = "below">
+      <mat-form-field matTooltip = "{{userModel?.id}}" matTooltipPosition = "below">
          <mat-label>ID</mat-label>
-        <input matInput disabled [ngModel]="userModel.id"/>
+        <input matInput disabled [ngModel]="userModel?.id"/>
        </mat-form-field>
 
-      <mat-form-field matTooltip = "{{userModel.username}}" matTooltipPosition = "below">
+      <mat-form-field matTooltip = "{{userModel?.username}}" matTooltipPosition = "below">
         <mat-label>Username</mat-label>
-        <input matInput disabled [ngModel]="userModel.username"/>
+        <input matInput disabled [ngModel]="userModel?.username"/>
       </mat-form-field>
 
-      <mat-form-field matTooltip = "{{userModel.name}}" matTooltipPosition = "below">
+      <mat-form-field matTooltip = "{{userModel?.name}}" matTooltipPosition = "below">
         <mat-label>Name</mat-label>
-        <input matInput disabled [ngModel] = "userModel.name"/>
-      </mat-form-field>
-    </div>
-
-  <div class="form-row">
-    <mat-form-field matTooltip = "{{userModel.phone}}" matTooltipPosition = "below">
-        <mat-label>Phone</mat-label>
-        <input matInput disabled [ngModel]="userModel.phone"/>
-      </mat-form-field>
-
-    <mat-form-field matTooltip = "{{userModel.website}}" matTooltipPosition = "below">
-          <mat-label>Website</mat-label>
-          <input matInput disabled [ngModel]="userModel.website"/>
-        </mat-form-field>
-
-      <mat-form-field matTooltip = "{{userModel.email}}" matTooltipPosition = "below">
-        <mat-label>Email</mat-label>
-        <input matInput disabled [ngModel]="userModel.email"/>
+        <input matInput disabled [ngModel] = "userModel?.name"/>
       </mat-form-field>
     </div>
 
     <div class="form-row">
-        <mat-form-field matTooltip = "{{userModel.address}}" matTooltipPosition = "below">
-          <mat-label>Address</mat-label>
-          <input matInput disabled [ngModel]="userModel.address" ng-list/>
+      <mat-form-field matTooltip = "{{userModel?.phone}}" matTooltipPosition = "below">
+          <mat-label>Phone</mat-label>
+          <input matInput disabled [ngModel]="userModel?.phone"/>
         </mat-form-field>
 
-      <mat-form-field matTooltip = "{{userModel.geo}}" matTooltipPosition = "below">
-          <mat-label>Geo</mat-label>
-          <input matInput disabled [ngModel]="userModel.geo" ng-list/>
-        </mat-form-field>
+      <mat-form-field matTooltip = "{{userModel?.website}}" matTooltipPosition = "below">
+            <mat-label>Website</mat-label>
+            <input matInput disabled [ngModel]="userModel?.website"/>
+          </mat-form-field>
 
-      <mat-form-field matTooltip="{{userModel.company}}" matTooltipPosition = "below">
-        <mat-label>Company</mat-label>
-        <input matInput disabled [ngModel]="userModel.company" ng-list/>
-       </mat-form-field>
-   </div>
-</div>
-</div>
+        <mat-form-field matTooltip = "{{userModel?.email}}" matTooltipPosition = "below">
+          <mat-label>Email</mat-label>
+          <input matInput disabled [ngModel]="userModel?.email"/>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+          <mat-form-field matTooltip = "{{userModel?.address}}" matTooltipPosition = "below">
+            <mat-label>Address</mat-label>
+            <input matInput disabled [ngModel]="userModel?.address" ng-list/>
+          </mat-form-field>
+
+        <mat-form-field matTooltip = "{{userModel?.geo}}" matTooltipPosition = "below">
+            <mat-label>Geo</mat-label>
+            <input matInput disabled [ngModel]="userModel?.geo" ng-list/>
+          </mat-form-field>
+
+        <mat-form-field matTooltip="{{userModel?.company}}" matTooltipPosition = "below">
+          <mat-label>Company</mat-label>
+          <input matInput disabled [ngModel]="userModel?.company" ng-list/>
+         </mat-form-field>
+     </div>
+  </div>
+</ng-container>

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { createEntry } from '../store/guest-book.actions';
-import { AppState } from '../../store/reducers';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,12 +13,12 @@ export class GuestBookDialogService {
   constructor(private dialog: MatDialog) {}
 
   public openDialog(
-    store: Store<AppState>,
+    store: any,
     component: any,
-    width: string,
-    height: string,
-    hasBackdrop: boolean,
-    closeOnNavigation: boolean
+    width?: string,
+    height?: string,
+    hasBackdrop?: boolean,
+    closeOnNavigation?: boolean
   ): Observable<void> {
     let entryDialogRef: MatDialogRef<any>;
     entryDialogRef = this.dialog.open(

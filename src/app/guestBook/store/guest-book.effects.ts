@@ -55,6 +55,6 @@ export class GuestBookEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private guestBookService: ApiService
+    private guestBookService: ApiService,
   ) {}
 }

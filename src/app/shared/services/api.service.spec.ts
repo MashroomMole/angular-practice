@@ -13,8 +13,6 @@ describe('ApiService', () => {
   let httpMock: HttpTestingController;
   let httpClient: HttpClient;
 
-
-
   beforeEach(
     () => {
       TestBed.configureTestingModule({
@@ -125,75 +123,4 @@ describe('ApiService', () => {
       req.flush(user);
       httpMock.verify();
     });
-
-  // it('should handle errors', () => {
-  //   spyOn(service, 'getAllPosts').and.returnValue(of('error'))
-  //   });
-  //
-  // })
-
-  // it('should handle errors', () => {
-  //   const twainService = jasmine.createSpyObj('ApiService', ['getAllPosts']);
-  //   let getQuoteSpy;
-  //   getQuoteSpy = twainService.getQuote.and.returnValue(of(testQuote));
-  //
-  //
-  //   const post = mockPost;
-  //   // tslint:disable-next-line:prefer-const
-  //   let serviceStub;
-  //   // httpRequestSpy = jasmine.createSpyObj('HttpRequest', ['doesNotMatter']);
-  //   // httpHandlerSpy = jasmine.createSpyObj('HttpHandler', ['handle']);
-  //
-  //   spyOn(console, 'log').and.callThrough();
-  //
-  //   serviceStub = {
-  //     getAllPosts: jasmine.createSpy('getAllPosts').and.returnValue(of(post)),
-  //   };
-  //
-  //   spyOn(service.getAllPosts..returnValue(throwError(
-  //
-  //     'error!'
-  //   ));
-  //
-  //   serviceStub.doStuff().subscribe(
-  //
-  //     (res) => {
-  //
-  //     *working test, can access res*
-  //     },
-  //     (error) => {
-  //
-  //       console.error(error);
-  //       console.log(error);  //Prints 'error!' so throw works.
-  //       expect(console.error).toHaveBeenCalledWith('error!'); //Is true but won't be accepted for coverage.
-  //     }
-  //   );
-  //
-  //   httpHandlerSpy.handle.and.returnValue(throwError(error));
-  //
-  //   service.getAllPosts().subscribe((action) => {
-  //     err = error;
-  //   }
-  //   });
-  //   const mockService = {
-  //     getData: () => {
-  //       return of({data: 'any data'});
-  //     }
-  //   };
-  //
-  //   spyOn(mockService , 'getData').and.callFake(() => {
-  //     return throwError(new Error('Fake error'));
-  //   });
-  // });
-  //
-  // it('test error condition', (done) => {
-  //   service.getAllPosts().
-  //     .subscribe(
-  //       null, // you are not interested in the case something is emitted
-  //       error => {
-  //         expect(error).toEqual('error');
-  //         done();
-  //       },
-  //     )
-  // })
 });

@@ -72,16 +72,4 @@ it('should fetch all entries in posts page',
   });
     actions$.next(postsLoad());
   });
-
-// it('should catch error',
-//     (done) => {
-//       // spyOn(service, 'getFistFivePosts').and.throwError('some error');
-//       effects$.postsLoad$.pipe(first()).subscribe((action) => {
-//         expect(action).toEqual(
-//           postsLoadFailure({error: 'some error'})
-//         );
-//         done();
-//       });
-//       actions$.next(postsLoad());
-//     });
 });
